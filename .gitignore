@@ -1,2 +1,6 @@
 .DS_Store
-ASP.NET
+Legacy
+target
+.settings
+.classpath
+.project
