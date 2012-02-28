@@ -1,0 +1,15 @@
+<div id="backgroundImgDiv" class="backgroundImgDiv">
+	<img id="bgImg" class="backgroundImg" src="img/mask.png" />
+</div>
+<div id="logoDiv" class="logo">
+	<img src="img/modellini-logo.png" />
+</div>
+<div id="bottomDiv" class="bottomDiv">
+	<div id="descriptionDiv" class="descriptionDiv">
+		<span>Press the button below to continue.</span>
+	</div>
+	<input type="submit" name="loginButton" class="loginButton" value="Log In" />
+</div>
+<div id="footer" class="footer">
+    <img src="img/powered_by2.png" />
+</div>
