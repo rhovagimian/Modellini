@@ -17,11 +17,11 @@
 	</context-param>
 	<context-param>
 		<param-name>clientID</param-name>
-		<param-value>3MVG9Km_cBLhsuPyjZ7zuv1VVynbcN9gF7Tb.5ZeyYmCIt98DkM0l4mE.p1sfcRqGzsEoI1Y_Bbox0A7xncam</param-value>	
+		<param-value>3MVG9Km_cBLhsuPyjZ7zuv1VVymRRl6hTWMIzFZmtrA7Bj9j.T8gx.yxVB277bjy5ibWcZ2aPfD8uCtV6bhnm</param-value>	
 	</context-param>
 	<context-param>
 		<param-name>callbackURL</param-name>
-		<param-value>http://modellini-cedar.herokuapp.com/configure.jsp</param-value>
+		<param-value>https://modellini-cedar.herokuapp.com/configure.jsp</param-value>
 	</context-param>
 	<context-param>
 		<param-name>loginEndpointPRE</param-name>
