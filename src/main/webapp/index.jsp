@@ -23,22 +23,20 @@
     </style>
 </head>
 <body>
-    <form method="post" action="login">
-	    <div>
-	        <div id="backgroundImgDiv" class="backgroundImgDiv">
-	            <img id="bgImg" class="backgroundImg" src="images/mask.png" />
-	        </div>
-	        <div id="logoDiv" class="logo">
-	            <img src="images/modellini-logo.png" />
-	        </div>
-	        <div id="bottomDiv" class="bottomDiv">
-	            <div id="descriptionDiv" class="descriptionDiv">
-	                <span>Press the button below to continue.</span>
-	            </div>
-	            <input type="submit" class="loginButton" id="loginButton" value="Log In" />
-	        </div>
-	    </div>
-    </form>
+    <div>
+        <div id="backgroundImgDiv" class="backgroundImgDiv">
+            <img id="bgImg" class="backgroundImg" src="images/mask.png" />
+        </div>
+        <div id="logoDiv" class="logo">
+            <img src="images/modellini-logo.png" />
+        </div>
+        <div id="bottomDiv" class="bottomDiv">
+            <div id="descriptionDiv" class="descriptionDiv">
+                <span>Press the button below to continue.</span>
+            </div>
+            <input type="button" class="loginButton" id="loginButton" value="Log In" onclick="login();"/>
+        </div>
+    </div>
     <div id="footer" class="footer">
     <%--<div>Copyright&copy; 2010 Model Metrics</div> />--%>
     <img src="images/powered_by2.png" />
@@ -55,8 +53,13 @@
         	}
         }
 
-        function redirect() {
-            window.location = "../vehicle_selection.htm";
+        function login() {
+    		var sfUrl = <%= request.getServletContext().getInitParameter("loginEndpoint") 
+    			+ "?response_type=token&client_id=" + request.getServletContext().getInitParameter("clientID") 
+    			+ "&redirect_uri=" + response.encodeURL(request.getServletContext().getInitParameter("callbackURL")) 
+    			+ "&display=touch" %>
+    	
+    		window.location.href = sfUrl;
         }
     </script>
 </body>

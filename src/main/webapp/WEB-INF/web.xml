@@ -32,7 +32,7 @@
 		<param-value>3MVG9lKcPoNINVBIc1Gik821kcTKdEeFj9l1OgDJDOrKLF5L.N9dEWCfMKZoJuqrpadWdOqzpUnA.aCcR5TqT</param-value>
 	</context-param>
 	
-	<servlet>
+	<!--<servlet>
     	<servlet-name>LoginServlet</servlet-name>
     	<servlet-class>com.modelmetrics.LoginServlet</servlet-class>
   	</servlet>
@@ -40,5 +40,5 @@
   	<servlet-mapping>
     	<servlet-name>LoginServlet</servlet-name>
     	<url-pattern>/login</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping>-->
 </web-app> 
