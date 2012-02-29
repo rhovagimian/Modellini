@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+	<context-param>	
+		<param-name>endpointPRE</param-name>
+		<param-value>https://prerelna1.pre.salesforce.com/services/data/v20.0/</param-value>
+		<param-name>endpoint</param-name>
+		<param-value>https://na3.salesforce.com/services/data/v20.0/</param-value>
+		<param-name>loginEndpoint</param-name>
+		<param-value>https://login.salesforce.com/services/oauth2/authorize</param-value>	
+		<param-name>clientID</param-name>
+		<param-value>3MVG9Km_cBLhsuPyjZ7zuv1VVynbcN9gF7Tb.5ZeyYmCIt98DkM0l4mE.p1sfcRqGzsEoI1Y_Bbox0A7xncam</param-value>	
+		<param-name>callbackURL</param-name>
+		<param-value>https://restdemo.modelmetrics.com/restdemo/Configure.aspx</param-value>
+		<param-name>loginEndpointPRE</param-name>
+		<param-value>https://prerellogin.pre.salesforce.com/services/oauth2/authorize</param-value>	
+		<param-name>clientIDPRE</param-name>
+		<param-value>3MVG9lKcPoNINVBIc1Gik821kcTKdEeFj9l1OgDJDOrKLF5L.N9dEWCfMKZoJuqrpadWdOqzpUnA.aCcR5TqT</param-value>
+	</context-param>
+</web-app> 

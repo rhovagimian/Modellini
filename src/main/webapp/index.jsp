@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-    <form id="form1">
+    <form method="post" action="/login">
 	    <div>
 	        <div id="backgroundImgDiv" class="backgroundImgDiv">
 	            <img id="bgImg" class="backgroundImg" src="images/mask.png" />
@@ -40,9 +40,7 @@
 	    </div>
     </form>
     <div id="footer" class="footer">
-    <%--<div>Copyright&copy; 2010 Model Metrics</div>
-    	 <asp:Button CssClass="loginButton" id="loginButton" runat="server" 
-                onclick="Button1_Click" Text="Log In" />--%>
+    <%--<div>Copyright&copy; 2010 Model Metrics</div> />--%>
     <img src="images/powered_by2.png" />
 </div>
     <script type="text/javascript">
