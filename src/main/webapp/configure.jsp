@@ -13,13 +13,12 @@
         .portrait { width: 768px; height: 960px; }
         .landscape { width: 1024px; height: 700px; }
 
-        body
-        {
-        color: white;
-        margin: 0;
-        padding: 0;
-        font-family: Helvetica;
-        height: 1024px;
+        body  {
+	        color: white;
+	        margin: 0;
+	        padding: 0;
+	        font-family: Helvetica;
+	        height: 1024px;
         }
     
     </style>
@@ -31,7 +30,6 @@
 </head>
 <body class="zflow">
     <form action="/review" method="post">
-        
 		<div class="logo">
 		    <img src="images/modellini-logo.png" />
 		</div>
@@ -59,21 +57,18 @@
 		    <div class="optionOne" onclick="selectOpt(this);">
 		        <img class="optionCheck" src="images/check2.png" />
 		        <img class="optionImg" src="images/gps.jpg" />
-		        
 		        <input type="checkbox" style="display:none;" />
 		    </div>
 
 		    <div class="optionTwo" onclick="selectOpt(this);">
 		        <img class="optionCheck" src="images/check2.png" />
 		        <img class="optionImg" src="images/heated.jpg" />
-		        
 		        <input type="checkbox" style="display:none;" />
 		    </div>
 
 		    <div class="optionThree" onclick="selectOpt(this);">
 		        <img class="optionCheck" src="images/check2.png" />
 		        <img class="optionImg" src="images/ipod.jpg" />
-		        
 		        <input type="checkbox" style="display:none;" />
 		    </div>
 		    
@@ -119,14 +114,7 @@
 		</div>
 	</form>
 	<script>
-	    jQuery(window).load(function () {
-	        window.onorientationchange(null);
-	        zflow([
-	        <% foreach (string i in images) %>
-	            <%{ Response.Write("\"" + i + "\", "); } %>
-	        ], "#tray");
-	        
-	    });
+	    
 	
 	    window.onorientationchange = function (event) {
 	        if (window.orientation == 0) {
