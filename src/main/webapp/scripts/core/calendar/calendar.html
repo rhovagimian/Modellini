@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Spry Calendar API</title>
+<link rel="stylesheet" type="text/css" media="screen" href="/spry/css/articles.css" />
+</head>
+<body>
+	<div id="overview">
+		<h3>Calendar</h3>
+		<h4>Description</h4>
+		<p>The Spry Calendar is a UI widget that displays a dynamic calendar with forward and reverse navigation as well as clickable dates for date selection.</p>
+		<h4>Required Files</h4>
+		<blockquote>
+			<p><a href="../../../widgets/calendar/SpryCalendar.js">SpryCalendar.js</a></p>
+   		  <p><a href="../../../widgets/calendar/SpryCalendar.css">SpryCalendar.css</a></p>
+		</blockquote>
+		<h4>Reference File</h4>
+			<blockquote>
+				<p><a href="../../../widgets/calendar/SpryCalendar.html">SpryCalendar.html</a></p>
+			</blockquote>
+		<h4>Sample Files</h4>
+			<blockquote>
+				<p><a href="../../../widgets/calendar/SpryCalendarSample.html">SpryCalendarSample.html</a></p>
+			</blockquote>
+		<h4>&nbsp;</h4>
+	</div>
+	<div id="structure">
+		<h3>Structure</h3>
+		<p>The widget structure is as follows:</p>
+		<pre>
+&lt;widget table&gt;
+	&lt;Title tr&gt;
+		&lt;Previous nav td&gt;&lt;/Previous nav td&gt;
+		&lt;Month-Year td&gt;&lt;/Month-Year td&gt;
+		&lt;Next nav td&gt;&lt;/Next nav td&gt;
+	&lt;/Title tr&gt;
+	&lt;Days of the week tr&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+	&lt;/Days of the week tr&gt;
+	&lt;Week 1 tr&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+	&lt;/Week 1 tr&gt;
+	&lt;Week 2 tr&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+	&lt;/Week 2 tr&gt;
+	&lt;Week 3 tr&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+	&lt;/Week 3 tr&gt;
+	&lt;Week 4 tr&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+	&lt;/Week 4 tr&gt;
+	&lt;Week 5 tr&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+	&lt;/Week 5 tr&gt;
+	&lt;Week 6 tr&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+		&lt;Day td&gt;&lt;/Day td&gt;
+	&lt;/Week 6 tr&gt;
+&lt;/widget table&gt;
+		</pre>
+		<p>The table must be 7 columns wide by 8 rows deep and the tr tags that contain the date cells must have a unique ID attribute.</p>
+		<p>Using the provided files, the default mark up is:</p>
+		<pre>
+&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; id=&quot;cal1&quot;&gt;
+	&lt;tr id=&quot;titleRow&quot&gt;
+		&lt;td class=&quot;CalendarMonthHeader&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot;&gt;&amp;nbsp;&lt;/a&gt;&lt;/td&gt;
+		&lt;td class=&quot;CalendarMonthHeader&quot; colspan=&quot;5&quot;&gt;Default text&lt;/td&gt;
+		&lt;td class=&quot;CalendarMonthHeader&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot;&gt;&amp;nbsp;&lt;/a&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td class=&quot;CalendarDayHeader&quot;&gt;S&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayHeader&quot;&gt;M&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayHeader&quot;&gt;T&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayHeader&quot;&gt;W&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayHeader&quot;&gt;T&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayHeader&quot;&gt;F&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayHeader&quot;&gt;S&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr id=&quot;c1_week1&quot;&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr id=&quot;c1_week2&quot;&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr id=&quot;c1_week3&quot;&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr id=&quot;c1_week4&quot;&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr id=&quot;c1_week5&quot;&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr id=&quot;c1_week6&quot;&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+		&lt;td class=&quot;CalendarDayCell&quot;&gt;&amp;nbsp;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+	var cal1 = new Spry.Widget.Calendar(&quot;cal1&quot;);
+&lt;/script&gt;
+		</pre>
+		<h4>&nbsp;</h4>
+	</div>
+	<div id="constructor">
+		<h3>Constructor</h3>
+		<p>Widget Constructors are small pieces of javascript that activate the markup into the working widget. These scripts must come AFTER the markup on the page, since the markup needs to exist before the constructor fires.</p>
+		<pre>
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+	var cal1 = new Spry.Widget.Calendar(&quot;cal1&quot;);
+&lt;/script&gt;
+		</pre>
+		<h4>Basic Constructor</h4>
+		<p>A basic constructor specifies the name of the widget and identifies the ID of the main markup container. The name of the widget is used to identify the widget for functions and methods.</p>
+		<pre>
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+	var <span class="hilite">widgetname</span> = new Spry.Widget.Calendar(&quot;<span class="hilite">id of widget table</span>&quot;);
+&lt;/script&gt;
+		</pre>
+		<h4>Constructor Options</h4>
+		<p>Constructor options allow users to specify certain attributes of the widget.</p>
+		<p>Constructor options follow the ID parameter, wrapped in curly braces {}. Options are name:value pairs, separated by a colon (:).</p>
+		<pre>
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+	var widgetname = new Spry.Widget.Calendar(&quot;id of widget table&quot;, <span class="hilite">{option1:value, option2:value, option3:&quot;value&quot;}</span>);
+&lt;/script&gt;
+		</pre>
+		<table width="954" id="options">
+    <tr>
+      <th width="171">Option</th>
+      <th width="124">Values</th>
+      <th width="87">Default</th>
+      <th width="552">Description</th>
+    </tr>
+    <tr>
+    	<td>year</td>
+    	<td>number</td>
+    	<td>Current year from a new Date object</td>
+    	<td>Default calendar year</td>
+    </tr>
+    <tr>
+    	<td>month</td>
+    	<td>number (0-11)</td>
+    	<td>Current month from a new Date object</td>
+    	<td>Default calendar month</td>
+    </tr>
+    <tr>
+    	<td>calendarMonths</td>
+    	<td>array</td>
+    	<td>[&quot;January&quot;,&quot;February&quot;,&quot;March&quot;, &quot;April&quot;,&quot;May&quot;,&quot;June&quot;, &quot;July&quot;,&quot;August&quot;,&quot;September&quot;, &quot;October&quot;,&quot;November&quot;,&quot;December&quot;]</td>
+    	<td>Name of the months used in the calendar header.</td>
+    </tr>
+    <tr>
+    	<td>headerRowId</td>
+    	<td>string</td>
+    	<td>null</td>
+    	<td>Table row CSS identifier for the row to be used as the header. If null, the first row of the table will be used.</td>
+    </tr>
+    <tr>
+    	<td>enableKeyboardNavigation</td>
+    	<td>true or false</td>
+    	<td>true</td>
+    	<td>Allow the user to use the keyboard for navigation between days of the calendar.</td>
+    </tr>
+    <tr>
+    	<td>previousDayKeyCode</td>
+    	<td>number</td>
+    	<td>37 (left arrow key)</td>
+    	<td>Key code to allow users to navigate the focused day to the previous day using the keyboard.</td>
+    </tr>
+    <tr>
+    	<td>nextDayKeyCode</td>
+    	<td>number</td>
+    	<td>39 (right arrow key)</td>
+    	<td>Key code to allow users to navigate the focused day to the next day using the keyboard.</td>
+    </tr>
+    <tr>
+    	<td>spaceKeyCode</td>
+    	<td>number</td>
+    	<td>32  (space key)</td>
+    	<td>Key code to allow users to set the selected date using the keyboard.</td>
+    </tr>
+    <tr>
+    	<td>selectedDate</td>
+    	<td>Date</td>
+    	<td>null</td>
+    	<td>Currently selected date.</td>
+    </tr>
+    <tr>
+    	<td>callbackFunction</td>
+    	<td>function</td>
+    	<td>null</td>
+    	<td>Function that will be assigned to handle the date clicks. This function must accept a Date object as a parameter.</td>
+    </tr>
+    <tr>
+    	<td>calendarClass</td>
+    	<td>CSS class name</td>
+    	<td>Calendar</td>
+    	<td>Style the table.</td>
+    </tr>
+    <tr>
+    	<td>foreignDayClass</td>
+    	<td>CSS class name</td>
+    	<td>CalendarForeignDay</td>
+    	<td>Style the table cells that do not fall within the current calendar month.</td>
+    </tr>
+    <tr>
+    	<td>monthHeaderClass</td>
+    	<td>CSS class name</td>
+    	<td>CalendarMonthHeader</td>
+    	<td>Style the header cells</td>
+    </tr>
+    <tr>
+    	<td>navOverClass</td>
+    	<td>CSS class name</td>
+    	<td>CalendarNavOver</td>
+    	<td>Style the header navigation cells when a user mouses over them.</td>
+    </tr>
+    <tr>
+    	<td>dayHeaderClass</td>
+    	<td>CSS class name</td>
+    	<td>CalendarDayHeader</td>
+    	<td>Style the day header cells.</td>
+    </tr>
+    <tr>
+    	<td>dayClass</td>
+    	<td>CSS class name</td>
+    	<td>CalendarDayCell</td>
+    	<td>Default style for the day cells. Each cell that is not in the header rows <strong>MUST have this class added to the HTML markup at design time</strong>.</td>
+    </tr>
+    <tr>
+    	<td>dayOverClass</td>
+    	<td>CSS class name</td>
+    	<td>CalendarDayCellOver</td>
+    	<td>Style the day cells when a user mouses over them.</td>
+    </tr>
+    <tr>
+    	<td>todayClass</td>
+    	<td>CSS class name</td>
+    	<td>CalendarTodayCell</td>
+    	<td>Highlight today's date if it is in the current calendar month.</td>
+    </tr>
+    <tr>
+    	<td>selectedClass</td>
+    	<td>CSS class name</td>
+    	<td>CalendarSelectedCell</td>
+    	<td>Highlight the selected date if it is in the current calendar month.</td>
+    </tr>
+    <tr>
+    	<td>focusedCellClass</td>
+    	<td>CSS class name</td>
+    	<td>CalendarFocusedDay</td>
+    	<td>Highlight the day cell that currently has focus.</td>
+    </tr>
+    <tr>
+    	<td>focusedClass</td>
+    	<td>CSS class name</td>
+    	<td>CalendarFocused</td>
+    	<td>Highlight the calendar element when it has focus.</td>
+    </tr>
+    </table>
+    <pre>
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+	// Used as the calendar callback function.
+	var cb = function(val)
+	{
+		alert(&quot;You clicked on &quot; + val + &quot;.&quot;);
+	}
+	// The date we want selected in the calendar.
+	var sd = new Date(&quot;1/1/2009&quot;);
+	
+	var cal1 = new Spry.Widget.Calendar(&quot;cal1&quot;,{month:4, year:2010, callbackFunction:cb, selectedDate:sd});
+&lt;/script&gt;   
+    </pre>
+    <p>The above example creates a Spry calendar from the table with an ID of &quot;cal1&quot; with May 2010 as the default month. When a date is clicked, the callback function triggers an alert box telling the user which date he/she clicked. This also changes the selected date from January 1, 2009 to the date that was clicked.</p>
+	<p>Remember that JavaScript is case sensitive and a Date object's months are zero-based.</p>
+	<h4>&nbsp;</h4>
+	</div>
+	<div id="methods">
+		<h2>Calendar Methods</h2>
+		<div id="clearselection">
+			<h3>clearSelection</h3>
+			<p>Clears the selected date and removes the highlight style from the table cell if it is showing.</p>
+			<h4>Format</h4>
+			<p>Calendar.clearSelection()</p>
+			<h4>Example</h4>
+			<pre>
+&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;cal1.clearSelection();&quot;&gt;Clear selection&lt;/a&gt;
+			</pre>
+		</div>
+		<div id="getselecteddate">
+			<h3>getSelectedDate</h3>
+			<p>Returns the selectedDate Date object.</p>
+			<h4>Format</h4>
+			<p>Calendar.getSelectedDate()</p>
+			<h4>Example</h4>
+			<pre>
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+	function viewNextMonth()
+	{
+		var nm = cal1.getSelectedDate().getUTCMonth() + 1;
+		var ny = cal1.getSelectedDate().getUTCFullYear();
+		cal1.setCalendarDate(ny, nm);
+		return false;
+	}
+&lt;/script&gt;
+
+&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;viewNextMonth();&quot;&gt;View next month&lt;/a&gt;
+			</pre>
+		</div>
+		
+		<div id="setcalendardate">
+			<h3>setCalendarDate</h3>
+			<p>Redraws the calendar with a new month and year.</p>
+			<h4>Format</h4>
+			<p>Calendar.setCalendarDate(number yr, number mo)</p>
+			<h4>Example</h4>
+			<pre>
+&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;cal1.setCalendarDate(2010, 4);&quot;&gt;Set date to May 2010&lt;/a&gt;
+			</pre>
+		</div>
+		<div id="setselecteddate">
+			<h3>setSelectedDate</h3>
+			<p>Allows setting of the selected date for the calendar so the day will be highlighted when displayed using script code rather than having to click on a date cell.</p>
+			<h4>Format</h4>
+			<p>Calendar.setSelectedDate(mixed val)</p>
+			<h4>Example</h4>
+			<pre>
+&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;cal1.setSelectedDate(&quot;1/1/2009&quot;);&quot;&gt;Set selected date to January 1, 2010.&lt;/a&gt;
+
+&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;cal1.setSelectedDate(1262325600000);&quot;&gt;Set selected date to January 1, 2010.&lt;/a&gt;
+			</pre>
+		</div>
+	</div>
+<hr /><p>Copyright &copy; 2007 Ronald Ferguson <br />
+All rights reserved.</p>
+</body>
+</html>

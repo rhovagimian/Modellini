@@ -1,0 +1,100 @@
+@charset "utf-8";
+/* CSS Document */
+.Calendar{
+	width:180px;
+	border:1px solid #000000;
+}
+
+.CalendarFocused{
+	border-color:#0000FF !important;	
+}
+
+td.CalendarMonthHeader{
+	font-family: Arial, Helvetica, san-serif;
+	font-size:12px;
+	font-weight:bold;
+	color:#000000;
+	padding:3px;
+	background-color:#999999;
+	text-align:center;
+	height:16px;
+}
+
+td.CalendarNavOver {
+	background-color:#CCCCCC;	
+}
+
+td.CalendarMonthHeader a{
+	text-decoration:none;
+}
+
+td.CalendarMonthHeader a.previous{
+	background-image: url(SpryCalendarLeft.gif);
+	background-repeat: no-repeat;
+	background-position: 95% 50%;
+}
+
+td.CalendarMonthHeader a.previous:hover {
+	background-image: url(SpryCalendarLeftHover.gif);
+	background-repeat: no-repeat;
+	background-position: 95% 50%;
+}
+
+td.CalendarMonthHeader a.next{
+	background-image: url(SpryCalendarRight.gif);
+	background-repeat: no-repeat;
+	background-position: 95% 50%;
+}
+
+td.CalendarMonthHeader a.next:hover {
+	background-image: url(SpryCalendarRightHover.gif);
+	background-repeat: no-repeat;
+	background-position: 95% 50%;
+}
+
+td.CalendarDayHeader{
+	border:1px solid #000000;
+	background-color:#666666;
+	color:#CCCCCC;
+	font-size:11px;
+	font-weight:bold;
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+	vertical-align:middle !important;
+	width:35px;
+	height:16px;
+}
+
+td.CalendarDayCell, td.DayCellOver, td.TodayCell, td.CalendarForeignDay, td.SelectedCell{
+	border:1px solid #000000;
+	text-align:center;
+	font-size:10px;
+	font-family: Arial, Helvetica, san-serif;
+	height:25px;
+	width:25px;
+	vertical-align:middle !important;
+}
+
+td.CalendarDayCell{
+	background-color:#FFFFFF;
+}
+
+td.CalendarTodayCell{
+	background-color:#99CCFF !important;
+}
+
+td.CalendarForeignDay{
+	background-color:#CCCCCC !important;
+}
+
+td.CalendarDayCellOver{
+	background-color:#CCCCFF !important;
+}
+
+td.CalendarSelectedCell{
+	background-color:#FFFF99 !important;
+}
+
+td.CalendarFocusedDay {
+	border-color:#FF0000 !important;
+}

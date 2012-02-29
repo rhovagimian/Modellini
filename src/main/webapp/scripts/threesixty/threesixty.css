@@ -1,0 +1,231 @@
+/* 
+ 
+ Abstract: Cubic Panorama Demo 
+ 
+ Version: 1.0 
+ 
+ Disclaimer: IMPORTANT:  This Apple software is supplied to you by  
+ Apple Inc. ("Apple") in consideration of your agreement to the 
+ following terms, and your use, installation, modification or 
+ redistribution of this Apple software constitutes acceptance of these 
+ terms.  If you do not agree with these terms, please do not use, 
+ install, modify or redistribute this Apple software. 
+ 
+ In consideration of your agreement to abide by the following terms, and 
+ subject to these terms, Apple grants you a personal, non-exclusive 
+ license, under Apple's copyrights in this original Apple software (the 
+ "Apple Software"), to use, reproduce, modify and redistribute the Apple 
+ Software, with or without modifications, in source and/or binary forms; 
+ provided that if you redistribute the Apple Software in its entirety and 
+ without modifications, you must retain this notice and the following 
+ text and disclaimers in all such redistributions of the Apple Software.  
+ Neither the name, trademarks, service marks or logos of Apple Inc.  
+ may be used to endorse or promote products derived from the Apple 
+ Software without specific prior written permission from Apple.  Except 
+ as expressly stated in this notice, no other rights or licenses, express 
+ or implied, are granted by Apple herein, including but not limited to 
+ any patent rights that may be infringed by your derivative works or by 
+ other works in which the Apple Software may be incorporated. 
+ 
+ The Apple Software is provided by Apple on an "AS IS" basis.  APPLE 
+ MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION 
+ THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS 
+ FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND 
+ OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS. 
+ 
+ IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL 
+ OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+ INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION, 
+ MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED 
+ AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE), 
+ STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE 
+ POSSIBILITY OF SUCH DAMAGE. 
+ 
+ Copyright (C) 2010 Apple Inc. All Rights Reserved. 
+*/
+
+#threesixty
+{
+  background-color:#fff
+}
+
+#threesixty.container
+{
+  background:0 to(#9aa3a7));
+  background-color:#a0a8ac
+}
+
+#threesixty #viewer
+{
+  -moz-border-radius:4px;
+  -o-border-radius:4px;
+  -webkit-border-radius:4px;
+  background:#fff;
+  border:#EEE 1px solid;
+  height:453px;
+  margin:0;
+  width:767px
+}
+
+
+#threesixty .how
+{
+  min-height:117px;
+  width:810px
+}
+
+#threesixty .how p
+{
+  color:#334046
+}
+
+#threesixty .how #interior_how
+{
+  display:none
+}
+
+#threesixty_nav
+{
+  width:250px
+}
+
+#threesixty_nav .label
+{
+  padding-top:10px
+}
+
+#threesixty #vr-clipper,#vr-container,#vr-position,#rotateX,#rotateY,#disable,.face
+{
+  height:378px;
+  width:840px
+}
+
+#threesixty #vr-clipper
+{
+  -moz-border-radius:4px;
+  -o-border-radius:4px;
+  -webkit-border-radius:4px;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  border-radius:4px;
+  display:none;
+  left:30px;
+  overflow:hidden;
+  position:absolute;
+  top:110px;
+  z-index:0
+}
+
+#threesixty #vr-container
+{
+  -webkit-perspective:520;
+  cursor:move;
+  position:relative
+}
+
+#threesixty #vr-position
+{
+  -webkit-transform:translateZ(529px);
+  -webkit-transform-style:preserve-3d;
+  position:relative
+}
+
+#threesixty #cube
+{
+  -webkit-transform-style:preserve-3d;
+  height:0;
+  margin:0 auto;
+  position:relative;
+  top:440px;
+  width:0
+}
+
+#threesixty #disable
+{
+  -webkit-user-select:text;
+  background-color:orange;
+  color:#000;
+  font-size:18px;
+  line-height:1.3;
+  opacity:0.7;
+  padding-top:40px;
+  position:absolute;
+  text-align:center;
+  z-index:10
+}
+
+#threesixty .face
+{
+  -webkit-backface-visibility:hidden;
+  display:block;
+  height:880px;
+  left:-440px;
+  position:absolute;
+  top:-700px;
+  width:880px
+}
+
+#threesixty #face1
+{
+  -webkit-transform:translate3d(-439.5px,0,0) rotate3d(0,1,0,90deg)
+}
+
+#threesixty #face2
+{
+  -webkit-transform:translate3d(0,0,-439.5px)
+}
+
+#threesixty #face3
+{
+  -webkit-transform:translate3d(439.5px,0,0) rotate3d(0,1,0,-90deg)
+}
+
+#threesixty #face4
+{
+  -webkit-transform:rotate3d(0,1,0,180deg) translate3d(0,0,-439.5px)
+}
+
+#threesixty #face5
+{
+  -webkit-transform:translate3d(0,-439.5px,0) rotate3d(1,0,0,-90deg) rotate3d(0,0,1,90deg)
+}
+
+#threesixty #face6
+{
+  -webkit-transform:translate3d(0,439.5px,0) rotate3d(1,0,0,90deg) rotate3d(0,0,1,-90deg)
+}
+
+50%
+{
+  -webkit-transform:rotateX(-180deg)
+}
+
+100%
+{
+  -webkit-transform:rotateX(360deg);
+  display:block;
+  opacity:1
+}
+
+#threesixty #rotor-x,#threesixty #rotor-y
+{
+  -webkit-transform-style:preserve-3d
+}
+
+#threesixty #rotateX,#threesixty #rotateY
+{
+  -webkit-animation-duration:5s;
+  -webkit-animation-iteration-count:infinite;
+  -webkit-transform-style:preserve-3d;
+  position:relative;
+  width:100%
+}
+
+@media screen and -webkit-transform-3d {
+  #threesixty #disable
+  {
+    display:none
+  }
+}

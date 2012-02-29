@@ -1,0 +1,36 @@
+Spry Calendar Widget Installation
+
+The download consists of the following files:
+
+	• SpryCalendar.css - Style sheet for the calendar widget
+	• SpryCalendar.html - Basic usage for the calendar widget
+	• SpryCalendar.js - JavaScript for the calendar widget
+	• SpryCalendarLeft.gif - Left month navigation arrow
+	• SpryCalendarLeftHover.gif - Left month navigation arrow (hover state)
+	• SpryCalendarRight.gif - Right month navigation arrow
+	• SpryCalendarRightHover.gif - Right month navigation arrow (hover state)
+	• SpryCalendarSample.html - Sample usage of the calendar widget
+	• calendar.html - Programming API for the calendar widget
+	• toc.htm - Optional table of contents file for the Spry API which includes links to the calendar widget
+	• installation.txt - this file
+
+
+You will need to copy the files to your Spry installation directory as follows (SPRY_ROOT is the folder of your Spry installation).
+
+Copy calendar.html to SPRY_ROOT/articles/data_api/apis/.
+
+Optionally, copy toc.htm to SPRY_ROOT/articles/data_api/. 
+***Ensure that you back up your original file before copying this file.***
+
+Create a new directory under SPRY_ROOT/widgets called "calendar" and copy the following files to that directory.
+
+	• SpryCalendar.js
+	• SpryCalendar.css
+	• SpryCalendarLeft.gif
+	• SpryCalendarLeftHover.gif
+	• SpryCalendarRight.gif
+	• SpryCalendarRightHover.gif
+	• SpryCalendar.html
+	• SpryCalendarSample.html
+
+
