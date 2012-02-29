@@ -6,17 +6,39 @@
 	<context-param>	
 		<param-name>endpointPRE</param-name>
 		<param-value>https://prerelna1.pre.salesforce.com/services/data/v20.0/</param-value>
+	</context-param>
+	<context-param>
 		<param-name>endpoint</param-name>
 		<param-value>https://na3.salesforce.com/services/data/v20.0/</param-value>
+	</context-param>
+	<context-param>
 		<param-name>loginEndpoint</param-name>
 		<param-value>https://login.salesforce.com/services/oauth2/authorize</param-value>	
+	</context-param>
+	<context-param>
 		<param-name>clientID</param-name>
 		<param-value>3MVG9Km_cBLhsuPyjZ7zuv1VVynbcN9gF7Tb.5ZeyYmCIt98DkM0l4mE.p1sfcRqGzsEoI1Y_Bbox0A7xncam</param-value>	
+	</context-param>
+	<context-param>
 		<param-name>callbackURL</param-name>
 		<param-value>https://restdemo.modelmetrics.com/restdemo/Configure.aspx</param-value>
+	</context-param>
+	<context-param>
 		<param-name>loginEndpointPRE</param-name>
 		<param-value>https://prerellogin.pre.salesforce.com/services/oauth2/authorize</param-value>	
+	</context-param>
+	<context-param>
 		<param-name>clientIDPRE</param-name>
 		<param-value>3MVG9lKcPoNINVBIc1Gik821kcTKdEeFj9l1OgDJDOrKLF5L.N9dEWCfMKZoJuqrpadWdOqzpUnA.aCcR5TqT</param-value>
 	</context-param>
+	
+	<servlet>
+    	<servlet-name>LoginServlet</servlet-name>
+    	<servlet-class>com.modelmetrics.LoginServlet</servlet-class>
+  	</servlet>
+
+  	<servlet-mapping>
+    	<servlet-name>LoginServlet</servlet-name>
+    	<url-pattern>/login</url-pattern>
+	</servlet-mapping>
 </web-app> 

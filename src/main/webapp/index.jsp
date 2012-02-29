@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes" /> 
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <style type="text/css">
@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-    <form method="post" action="/login">
+    <form method="post" action="login">
 	    <div>
 	        <div id="backgroundImgDiv" class="backgroundImgDiv">
 	            <img id="bgImg" class="backgroundImg" src="images/mask.png" />
