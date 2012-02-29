@@ -1,7 +1,6 @@
 package com.modelmetrics;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +19,8 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	String clientID = req.getServletContext().getInitParameter("clientID");
     	String redirectUrl = resp.encodeURL(req.getServletContext().getInitParameter("callbackURL"));
-    	String sfUrl = req.getServletContext().getInitParameter("loginEndpoint") + "?response_type=token&client_id=" +
-    	clientID + "&redirect_uri=" + redirectUrl + "&display=touch";
+    	String sfUrl = req.getServletContext().getInitParameter("loginEndpoint") + "?response_type=token&client_id=" 
+    		+ clientID + "&redirect_uri=" + redirectUrl + "&display=touch";
     	
     	resp.sendRedirect(sfUrl);
     }
