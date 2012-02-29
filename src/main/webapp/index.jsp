@@ -54,10 +54,10 @@
         }
 
         function login() {
-    		var sfUrl = <%= request.getServletContext().getInitParameter("loginEndpoint") 
+    		var sfUrl = "<%= request.getServletContext().getInitParameter("loginEndpoint") 
     			+ "?response_type=token&client_id=" + request.getServletContext().getInitParameter("clientID") 
     			+ "&redirect_uri=" + response.encodeURL(request.getServletContext().getInitParameter("callbackURL")) 
-    			+ "&display=touch" %>
+    			+ "&display=touch" %>;"
     	
     		window.location.href = sfUrl;
         }
