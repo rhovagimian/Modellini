@@ -41,4 +41,7 @@
     	<servlet-name>LoginServlet</servlet-name>
     	<url-pattern>/login</url-pattern>
 	</servlet-mapping>-->
+	<welcome-file>
+		index.jsp
+	</welcome-file>
 </web-app> 
