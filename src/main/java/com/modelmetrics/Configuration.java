@@ -91,15 +91,11 @@ public class Configuration {
 	        String jsonResponse = getUrlResponse(endpoint + "query/?q=" + java.net.URLEncoder.encode(queryString, "ISO-8859-1"));
 	        //_orgId = jsonResponse;
 	        Map<Object, Object> json = (Map<Object, Object>)new JSONParser().parse(jsonResponse);
-	        System.out.println(json);
 	        if(json.containsKey("totalSize")) {
 	        	Long size = (Long)json.get("totalSize");
-	        	System.out.println(size);
 	        	if(size != null && size > 0) {
 	        		ArrayList<Object> records = (ArrayList<Object>)json.get("records");
-	        		System.out.println(records);
 	        		Map<Object, Object> record = (Map<Object, Object>)records.get(0);
-	        		System.out.println(record);
 	        		_orgId = record.get("Id").toString();
 	        	}
 	        }
