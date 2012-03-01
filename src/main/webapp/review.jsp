@@ -70,7 +70,7 @@
 </head>
 <body>
 
-    <form id="form1">
+    <form id="form1" action="/createOrder" method="post">
     <div class="tableDiv">
         <%--<asp:Label ID="Label1" runat="server" Text=""></asp:Label>--%>
         <div class="topText">
