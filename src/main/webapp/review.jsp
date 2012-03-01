@@ -198,16 +198,14 @@
                	order.vehImg = "789";
                	order.opts = "1092";
                	order.signature = salesRecord.signature;
-        	   	$(function(){
-        		   $.ajax({
-        		      data: order,  
-        		      type: "POST",
-        		      url: "/createOrder",
-        		      success: function(response){
-            		      alert(response);
-        		      }
-        		   }
-				});
+        	   	$.post("createOrder", 
+                	{ signature : salesRecord.signature, totalPrice: "123", 
+            	   	  interiorImage : "456", vehImg: "789", options: "291"}, 
+            		function(data) {
+						alert(data);
+                  	}
+               );
+        		   
 			}
        </script>
        <div class="footer">
