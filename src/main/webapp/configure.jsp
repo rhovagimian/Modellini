@@ -34,7 +34,7 @@
 	
 </head>
 <body class="zflow">
-    <form action="/review" method="post">
+    <form action="review.jsp" method="post">
 		<div class="logo">
 		    <img src="images/modellini-logo.png" />
 		</div>

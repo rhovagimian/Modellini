@@ -17,57 +17,10 @@ public class Configuration {
 	private String _accessUrl;
 	private String _endpoint;
 	private String _orgId;
-	
-	private String _vehicleImage;
-	private String _leatherType;
-	private String _optionOne;
-	private String _optionTwo;
-	private String _optionThree;
 	private ArrayList<String> _images;
-	
 	
 	public Configuration() {
 		reset();
-	}
-	
-	public String getVehicleImage() {
-		return _vehicleImage;
-	}
-	
-	public void setVehicleImage(String vehicleImage) {
-		_vehicleImage = vehicleImage;
-	}
-	
-	public String getLeatherType() {
-		return _leatherType;
-	}
-	
-	public void setLeatherType(String leatherType) {
-		_leatherType = leatherType;
-	}
-	
-	public String getOptionOne() {
-		return _optionOne;
-	}
-	
-	public void setOptionOne(String optionOne) {
-		_optionOne = optionOne;
-	}
-	
-	public String getOptionTwo() {
-		return _optionTwo;
-	}
-	
-	public void setOptionTwo(String optionTwo) {
-		_optionTwo = optionTwo;
-	}
-	
-	public String getOptionThree() {
-		return _optionThree;
-	}
-	
-	public void setOptionThree(String optionThree) {
-		_optionThree = optionThree;
 	}
 	
 	public ArrayList<String> getImages() {
@@ -117,24 +70,13 @@ public class Configuration {
 		return _orgId;
 	}
 	
-	public void setOrgId() {
-		
-	}
-	
-	
 	public void reset() {
 		_images = new ArrayList<String>();
 		_accessToken = null;
 		_accessUrl = null;
 		_endpoint = null;
 		_orgId = null;
-		_vehicleImage = null;
-		_leatherType = null;
-		_optionOne = null;
-		_optionTwo = null;
-		_optionThree = null;
 	}
-	
 	
 	private Map<Object, Object> getSalesforceJSON(String queryString) throws Exception {
 		String queryUrl = _endpoint + "query/?q=" + java.net.URLEncoder.encode(queryString, "ISO-8859-1");
