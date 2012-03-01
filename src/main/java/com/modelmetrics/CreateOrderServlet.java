@@ -7,17 +7,12 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Enumeration;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.parser.JSONParser;
 
 public class CreateOrderServlet extends HttpServlet {
 
@@ -57,6 +52,7 @@ public class CreateOrderServlet extends HttpServlet {
 			}
 		}
 		catch(Exception ex) {
+			ex.printStackTrace();
 			ex.printStackTrace(System.err);
 			resp.sendError(404, ex.getMessage());
 		}
