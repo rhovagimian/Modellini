@@ -3,6 +3,7 @@
 <%
 	configuration.reset();
 	configuration.setAccessInformation(request.getParameter("accessToken"), request.getParameter("accessUrl"), request.getServletContext().getInitParameter("endpoint"));
+	session.setAttribute("configuration", configuration);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
