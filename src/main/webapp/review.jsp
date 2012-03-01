@@ -194,8 +194,9 @@
 			function createOrder() {
         	   	$.post("createOrder", 
                 	{ signature : salesRecord.signature, totalPrice: <%= order.getTotal() %>, 
-            	   	  interior : <%= order.getInterior() %>, vehImg: <%= order.getVehicleImage() %>,
-            	   	  options: <%= order.getOptions() %> }, 
+            	   	  interior : <%= "\""+order.getInterior() + "\"" %>, 
+            	   	  vehImg: <%= "\"" + order.getVehicleImage() + "\"" %>,
+            	   	  options: <%= "\""+ order.getOptions() + "\"" %> }, 
             		function(data) {
 						alert(data);
                   	}

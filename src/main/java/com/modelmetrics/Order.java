@@ -96,7 +96,7 @@ public class Order {
 				}
 			}
 			if(_options.length() > 1) {
-				_options = _options.substring(0, _options.length() - 2);
+				_options = _options.substring(0, _options.length() - 1);
 			}
 		}
 		return _options;
