@@ -44,7 +44,14 @@
 
 </head>
 <body>
-<%= request.getParameterNames() %>
+
+<%
+	List<String> requestParameterNames = Collections.list((Enumeration<String>)request.getParameterNames());
+
+	for ( String parameterName: requestParameterNames){
+    	out.write(parameterName + " = " + request.getParameter(parameter) + "<br/>");
+	}
+%>
 
     <form id="form1">
     <div class="tableDiv">
