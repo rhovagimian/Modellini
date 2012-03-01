@@ -1,23 +1,49 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<jsp:useBean id="configuration" class="com.modelmetrics.Configuration" scope="session" />
+<jsp:useBean id="order" class="com.modelmetrics.Order" scope="request" />
+<%
+	List<String> requestParameterNames = Collections.list((Enumeration<String>)request.getParameterNames());
+	
+	for (String parameterName : requestParameterNames){
+		String value = request.getParameter(parameterName);
+		if(parameterName.equalsIgnoreCase("color")){
+			order.setVehicleImage(value);
+		} else if(parameterName.equalsIgnoreCase("optionOneIn")){
+			order.setOptionOne(value);
+		} else if(parameterName.equalsIgnoreCase("optionTwoIn")){
+			order.setOptionTwo(value);
+		} else if(parameterName.equalsIgnoreCase("optionThreeIn")){
+			order.setOptionThree(value);
+		} else if(parameterName.equalsIgnoreCase("leather")){
+			order.setLeatherType(value);
+		}
+	}
+
+
+    
+}
+%>
 <%@ page import="java.util.*" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes" /> 
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Order Review</title>
 
     <script type="text/javascript">
+		<% if (configuration.getAccessToken() == null) { %>
+			window.location.replace = "index.jsp";
+		<% } %>
         var appName = 'REST Application';
         var loggedIn = false;
     </script>
 
     <style type="text/css">
 
-	    body
-	    {
+	    body  {
 	        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #fbf0db), color-stop(0.5, #fde9c2), color-stop(1.0, #ffdb96));
 	        height: 1024px;
 	        color: black;
@@ -46,14 +72,6 @@
 </head>
 <body>
 
-<%
-	List<String> requestParameterNames = Collections.list((Enumeration<String>)request.getParameterNames());
-
-	for ( String parameterName: requestParameterNames){
-    	out.write(parameterName + " = " + request.getParameter(parameterName) + "<br/>");
-	}
-%>
-
     <form id="form1">
     <div class="tableDiv">
         <%--<asp:Label ID="Label1" runat="server" Text=""></asp:Label>--%>
@@ -67,40 +85,55 @@
 	            <td style="text-align: center;font-weight:bold;font-size:18px;">Color:</td>
             	<td colspan="2" style="text-align: center;font-weight:bold;font-size:18px;">Options:</td>
             </tr>
+            
             <tr>
                 <td rowspan="3" style="width:356px;">
-                	<img id="carImage" height="255" width="400" />
+                	<% if(order.getVehicleImage() != null && order.getVehicleImage().length > 0) { %>
+                		<img id="carImage" height="255" width="400" src="<%= order.getVehicleImage() %>" />
+                	<% } %>
                 </td>
                 <td  style="width:127px;height:75px;">
-                	<img id="optionOneImage" height="50" width="127" />
+                	<% if(order.getOptionOne() != null && order.getOptionOne().length > 0) { %>
+                		<img id="optionOneImage" height="50" width="127" src="<%= order.getOptionOne() %>" />
+                	<% } %>
                 </td>
                 <td>
-                	<div id="navigationPanel">
-                		<span class="labelHeader">Navigation System</span><br/>
-                		<span>$3,299</span>
-                	</div>
+                	<% if(order.getOptionOne() != null && order.getOptionOne().length > 0) { %>
+	                	<div id="navigationPanel">
+	                		<span class="labelHeader">Navigation System</span><br/>
+	                		<span>$3,299</span>
+	                	</div>
+                	<% } %>
                 </td>
             </tr>
             <tr>
                 <td  style="width:127px;height:75px;">
-                	<img id="optionTwoImage" height="50" width="127" />
+                	<% if(order.getOptionTwo() != null && order.getOptionTwo().length > 0) { %>
+                		<img id="optionTwoImage" height="50" width="127" src="<%= order.getOptionTwo() %>" />
+                	<% } %>
                 </td>
                 <td>
-                	<div id="seatsPanel">
-                		<span class="labelHeader">Heated seats</span><br/>
-                		<span>$4,000</span>
-                	</div>
+                	<% if(order.getOptionTwo() != null && order.getOptionTwo().length > 0) { %>
+	                	<div id="seatsPanel">
+	                		<span class="labelHeader">Heated seats</span><br/>
+	                		<span>$4,000</span>
+	                	</div>
+	                <% } %>
                 </td>
             </tr>
             <tr>
                 <td  style="width:127px;height:75px;">
-                	<img id="optionThreeImage" height="50" width="127" />
+                	<% if(order.getOptionThree() != null && order.getOptionThree().length > 0) { %>
+                		<img id="optionThreeImage" height="50" width="127" src="<%= order.getOptionThree() %>" />
+                	<% } %>
                 </td>
                 <td>
-                	<div id="usbPanel">
-                		<span class="labelHeader">iPod and USB connector</span><br/>
-                		<span>$400</span>
-                	</div>
+                	<% if(order.getOptionTwo() != null && order.getOptionTwo().length > 0) { %>
+	                	<div id="usbPanel">
+	                		<span class="labelHeader">iPod and USB connector</span><br/>
+	                		<span>$400</span>
+	                	</div>
+	                <% } %>
                 </td>
             </tr>
         </table>
@@ -110,7 +143,9 @@
                 <span>Interior:</span>
             </div>
             <div>
-				<img id="leatherImage" height="106" width="166" />
+              	<% if(order.getLeatherType() != null && order.getLeatherType().length > 0) { %>
+             		<img id="leatherImage" height="106" width="166" src="<%= order.getLeatherType() %>" />
+              	<% } %>
             </div>
         </div>
 

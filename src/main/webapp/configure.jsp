@@ -31,7 +31,11 @@
     </style>
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/zflow/zflow.js"></script>
-	
+	<script type="text/javascript">
+		<% if (configuration.getAccessToken() == null) { %>
+			window.location.replace = "index.jsp";
+		<% } %>
+	</script>
 </head>
 <body class="zflow">
     <form action="review.jsp" method="post">

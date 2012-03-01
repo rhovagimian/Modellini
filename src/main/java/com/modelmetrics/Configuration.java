@@ -43,6 +43,18 @@ public class Configuration {
 		}
 		return _images;
 	}
+	
+	public String getAccessToken() {
+		return _accessToken;
+	}
+	
+	public String getAccessUrl() {
+		return _accessUrl;
+	}
+	
+	public String getEndpoint() {
+		return _endpoint;
+	}
 
 	public void setAccessInformation(String token, String url, String endpoint) {
 		_accessToken = token;
