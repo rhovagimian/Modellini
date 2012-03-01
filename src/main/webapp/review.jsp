@@ -194,7 +194,7 @@
 
        <script>
 			function createOrder() {
-        	   	$.post("createOrder", 
+				jQuery.post("createOrder", 
                 	{ signature : salesRecord.signature, totalPrice: <%= order.getTotal() %>, 
             	   	  interior : <%= "\""+order.getInterior() + "\"" %>, 
             	   	  vehImg: <%= "\"" + order.getVehicleImage() + "\"" %>,
