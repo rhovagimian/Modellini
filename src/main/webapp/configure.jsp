@@ -100,11 +100,11 @@
 		</div>
 
 		<div>
-		    <input id="color" type="hidden" />
-		    <input id="leather" type="hidden" />
-		    <input id="optionOneIn" type="hidden" />
-		    <input id="optionTwoIn" type="hidden" />
-		    <input id="optionThreeIn" type="hidden" />
+		    <input id="color" name="color" type="hidden" />
+		    <input id="leather" name="leather" type="hidden" />
+		    <input id="optionOneIn" name="optionOneIn" type="hidden" />
+		    <input id="optionTwoIn" name="optionTwoIn" type="hidden" />
+		    <input id="optionThreeIn" name="optionThreeIn" type="hidden" />
 		    <input id="continueButton" class="continueButton" type="submit" value="Continue" />
 		</div>
 	<%--<img class="360class" src="images/360.gif" height="30px" width="30px" style="position:absolute;top:10px;left:370px;" />--%>
