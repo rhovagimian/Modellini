@@ -13,6 +13,8 @@ public class Order {
 	private String _optionTwo;
 	private String _optionThree;
 	private int _totalPrice = -1;
+	private String _options = null;
+	private String _interior = null;
 	
 	public Order() {
 		reset();
@@ -65,6 +67,8 @@ public class Order {
 		_optionTwo = null;
 		_optionThree = null;
 		_totalPrice = -1;
+		_options = null;
+		_interior = null;
 	}
 	
 	public int getTotal() {
@@ -82,6 +86,36 @@ public class Order {
 	}
 	
 	public String getOptions() {
-		return "";
+		if (_options == null) {
+			String[] options = {_optionOne, _optionTwo, _optionThree};
+			String[] optionNames = {"Navigation system", "Heated seats", "iPod connector"};
+			_options = "";
+			for(int i=0; i < options.length; i++) {
+				if(options[i] != null && options[i].length() > 0) {
+					_options += optionNames[i] + ";";
+				}
+			}
+			if(_options.length() > 1) {
+				_options = _options.substring(0, _options.length() - 2);
+			}
+		}
+		return _options;
+	}
+	
+	public String getInterior() {
+		if (_leatherType == null) {
+			_interior = "";
+		}
+		if (_leatherType.contains("leather")) {
+            _interior = "Leather";
+        } else if (_leatherType.contains("suede")) {
+        	_interior = "Suede";
+        } else if (_leatherType.contains("crocodile")) {
+        	_interior = "Crocodile";
+        } else if (_leatherType.contains("lv")) {
+        	_interior = "Luxury";
+        }
+		
+		return _interior;
 	}
 }

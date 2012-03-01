@@ -192,15 +192,10 @@
 
        <script>
 			function createOrder() {
-            	order = new Object();
-               	order.totalPrice = "123";
-               	order.interiorImg = "345";
-               	order.vehImg = "789";
-               	order.opts = "1092";
-               	order.signature = salesRecord.signature;
         	   	$.post("createOrder", 
-                	{ signature : salesRecord.signature, totalPrice: "123", 
-            	   	  interiorImage : "456", vehImg: "789", options: "291"}, 
+                	{ signature : salesRecord.signature, totalPrice: <%= order.getTotal() %>, 
+            	   	  interior : <%= order.getInterior() %>, vehImg: <%= order.getVehicleImage() %>,
+            	   	  options: <%= order.getOptions() %> }, 
             		function(data) {
 						alert(data);
                   	}
