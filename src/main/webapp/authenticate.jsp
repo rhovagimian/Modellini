@@ -8,6 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" /> 
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <script type="text/javascript" src="Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="Scripts/core/oauth.js"></script>
 </head>
 <body>
 	<form name="authenticate" action="configure.jsp" method="post">
