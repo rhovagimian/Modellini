@@ -1,3 +1,6 @@
+<jsp:useBean id="configuration" class="com.modelmetrics.Configuration" scope="session"/>
+<jsp:setProperty name="configuration" property="*"/> 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,10 +28,108 @@
     <script type="text/javascript" src="Scripts/core/oauth.js"></script>
     <script type="text/javascript" src="Scripts/jquery.min.js"></script>
     <script type="text/javascript" src="Scripts/zflow/zflow.js"></script>
+	<script>
 
 
+pageMethodConcept = {
+    callServerSideMethod: function () {
+        PageMethods.setAccessToken(OAuth.decodePercent(OAuth.decodeForm(document.URL.substring(document.URL.indexOf('#') + 1, document.URL.length))[0][1]), OAuth.decodePercent(OAuth.decodeForm(document.URL.substring(document.URL.indexOf('#') + 1, document.URL.length))[1][1]), pageMethodConcept.callback);
+    },
+    callback: function (result) {
+        var resultString = "";
+        if (result) {
+            //done to get rid of the access token and sensitive data in the # url fragment
+            window.location = "Configure.aspx";
+        }
+    }
+}
+
+var accessT = OAuth.decodePercent(OAuth.decodeForm(document.URL.substring(document.URL.indexOf('#') + 1, document.URL.length))[0][1]);
+
+if (accessT != null && accessT.length > 10) {
+    pageMethodConcept.callServerSideMethod();
+}
+	
+	    window.onorientationchange = function (event) {
+	        if (window.orientation == 0) {
+	            jQuery("div.centering").attr("class", "centering portrait");
+	        }
+	        else {
+	            jQuery("div.centering").attr("class", "centering landscape");
+	        }
+	
+	        window.setTimeout(function () { window.scrollTo(0, 0); }, 100);
+	    }
+	
+	    var leatherOptions = ["images/leather.jpg", "images/suede.jpg", "images/crocodile.jpg", "images/lv.jpg"];
+	
+	    function changeLeather(v) {
+	        var el = document.getElementById("interiorImage");
+	        el.style.opacity = "0";
+	
+	        var el2 = document.getElementById("leather");
+	        if (v == "Leather") {
+	            el.style.webkitTransform = "translate3d(0px, 0, 200px)";
+	            el.src = leatherOptions[0];
+	            el2.value = leatherOptions[0];
+	            el.style.opacity = "1";
+	        }
+	        else if (v == "Suede") {
+	            el.style.webkitTransform = "translate3d(0px, 0, 200px)";
+	            el.src = leatherOptions[1];
+	            el2.value = leatherOptions[1];
+	            el.style.opacity = "1";
+	        }
+	        else if (v == "Crocodile") {
+	            el.style.webkitTransform = "translate3d(0px, 0, 200px)";
+	            el.src = leatherOptions[2];
+	            el2.value = leatherOptions[2];
+	            el.style.opacity = "1";
+	        }
+	        else if (v == "Luxury") {
+	            el.style.webkitTransform = "translate3d(0px, 0, 200px)";
+	            el.src = leatherOptions[3];
+	            el2.value = leatherOptions[3];
+	            el.style.opacity = "1";
+	        }
+	        else {
+	            el.style.webkitTransform = "translate3d(0px, 0, 0px)";
+	            el.style.opacity = "0";
+	            el2.value = "";
+	        }
+	    }
+	
+	    function selectOpt(v) {
+	        v.childNodes[2].checked = !v.childNodes[2].checked;
+	        var el = document.getElementById(v.className+"In");
+	        if (v.childNodes[2].checked == true) {
+	            v.childNodes[1].style.opacity = "1";
+	            el.value = v.childNodes[3].src;
+	        }
+	        else {
+	            v.childNodes[1].style.opacity = "0";
+	            el.value = "";
+	        }
+	    }
+	
+	    function hidePage() {
+	        var el = document.getElementById("form1");
+	        el.style.opacity = "0";
+	        el = document.getElementById("360frame");
+	        el.style.opacity = "1";
+	    }
+	
+	    function hide360() {
+	        var el = document.getElementById("360frame");
+	        el.style.opacity = "0";
+	        el = document.getElementById("form1");
+	        el.style.opacity = "1";
+	    }
+	</script>
 </head>
 <body class="zflow">
+<%= request.getParameter("accessToken")%><br/>
+<%= request.getParameter("accessUrl")%>
     <form action="/review" method="post">
 		<div class="logo">
 		    <img src="images/modellini-logo.png" />
@@ -113,104 +214,6 @@
 		   -->
 		</div>
 	</form>
-	<script>
-	    
 	
-	    window.onorientationchange = function (event) {
-	        if (window.orientation == 0) {
-	            jQuery("div.centering").attr("class", "centering portrait");
-	        }
-	        else {
-	            jQuery("div.centering").attr("class", "centering landscape");
-	        }
-	
-	        window.setTimeout(function () { window.scrollTo(0, 0); }, 100);
-	    }
-	
-	    var leatherOptions = ["images/leather.jpg", "images/suede.jpg", "images/crocodile.jpg", "images/lv.jpg"];
-	
-	    function changeLeather(v) {
-	        var el = document.getElementById("interiorImage");
-	        el.style.opacity = "0";
-	
-	        var el2 = document.getElementById("leather");
-	        if (v == "Leather") {
-	            el.style.webkitTransform = "translate3d(0px, 0, 200px)";
-	            el.src = leatherOptions[0];
-	            el2.value = leatherOptions[0];
-	            el.style.opacity = "1";
-	        }
-	        else if (v == "Suede") {
-	            el.style.webkitTransform = "translate3d(0px, 0, 200px)";
-	            el.src = leatherOptions[1];
-	            el2.value = leatherOptions[1];
-	            el.style.opacity = "1";
-	        }
-	        else if (v == "Crocodile") {
-	            el.style.webkitTransform = "translate3d(0px, 0, 200px)";
-	            el.src = leatherOptions[2];
-	            el2.value = leatherOptions[2];
-	            el.style.opacity = "1";
-	        }
-	        else if (v == "Luxury") {
-	            el.style.webkitTransform = "translate3d(0px, 0, 200px)";
-	            el.src = leatherOptions[3];
-	            el2.value = leatherOptions[3];
-	            el.style.opacity = "1";
-	        }
-	        else {
-	            el.style.webkitTransform = "translate3d(0px, 0, 0px)";
-	            el.style.opacity = "0";
-	            el2.value = "";
-	        }
-	    }
-	
-	    function selectOpt(v) {
-	        v.childNodes[2].checked = !v.childNodes[2].checked;
-	        var el = document.getElementById(v.className+"In");
-	        if (v.childNodes[2].checked == true) {
-	            v.childNodes[1].style.opacity = "1";
-	            el.value = v.childNodes[3].src;
-	        }
-	        else {
-	            v.childNodes[1].style.opacity = "0";
-	            el.value = "";
-	        }
-	    }
-	
-	
-	    pageMethodConcept = {
-	        callServerSideMethod: function () {
-	            PageMethods.setAccessToken(OAuth.decodePercent(OAuth.decodeForm(document.URL.substring(document.URL.indexOf('#') + 1, document.URL.length))[0][1]), OAuth.decodePercent(OAuth.decodeForm(document.URL.substring(document.URL.indexOf('#') + 1, document.URL.length))[1][1]), pageMethodConcept.callback);
-	        },
-	        callback: function (result) {
-	            var resultString = "";
-	            if (result) {
-	                //done to get rid of the access token and sensitive data in the # url fragment
-	                window.location = "Configure.aspx";
-	            }
-	        }
-	    }
-	
-	    var accessT = OAuth.decodePercent(OAuth.decodeForm(document.URL.substring(document.URL.indexOf('#') + 1, document.URL.length))[0][1]);
-	   
-	    if (accessT != null && accessT.length > 10) {
-	        pageMethodConcept.callServerSideMethod();
-	    }
-	
-	    function hidePage() {
-	        var el = document.getElementById("form1");
-	        el.style.opacity = "0";
-	        el = document.getElementById("360frame");
-	        el.style.opacity = "1";
-	    }
-	
-	    function hide360() {
-	        var el = document.getElementById("360frame");
-	        el.style.opacity = "0";
-	        el = document.getElementById("form1");
-	        el.style.opacity = "1";
-	    }
-	</script>
 </body>
 </html>
