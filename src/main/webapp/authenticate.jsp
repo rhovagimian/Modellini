@@ -12,8 +12,8 @@
 </head>
 <body>
 	<form name="authenticate" action="configure.jsp" method="post">
-		<input type="hidden" id="accessToken" />
-		<input type="hidden" id="accessUrl" />
+		<input type="text" id="accessToken" style="display: none;" />
+		<input type="text" id="accessUrl" style="display: none;" />
 		<input type="submit" style="display: none;" />
 	</form>
 	<script>
@@ -24,7 +24,7 @@
 		if (accessToken != null && accessToken.length > 10) {
 			$("#accessToken").val(accessToken);
 			$("#accessUrl").val(accessUrl);
-			$("#authenticate").submit();
+			document.authenticate.submit();
 		} else {
 			window.location.replace("index.jsp");
 		}
