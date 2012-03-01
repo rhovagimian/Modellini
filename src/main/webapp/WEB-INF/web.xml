@@ -21,7 +21,7 @@
 	</context-param>
 	<context-param>
 		<param-name>callbackURL</param-name>
-		<param-value>https://modellini-cedar.herokuapp.com/authenticate.jsp</param-value>
+		<param-value>https://modellini.herokuapp.com/authenticate.jsp</param-value>
 	</context-param>
 	<context-param>
 		<param-name>loginEndpointPRE</param-name>
