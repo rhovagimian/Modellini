@@ -31,6 +31,90 @@
     </style>
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/zflow/zflow.js"></script>
+	
+</head>
+<body class="zflow">
+    <form action="/review" method="post">
+		<div class="logo">
+		    <img src="images/modellini-logo.png" />
+		</div>
+		<div class="topContainer"></div>
+	<%--<a href="#" style="font-size: 16px;" onclick="hidePage();">View in 3D</a>--%>
+		<div class="stepOneText">1. Select a color</div>
+		<div class="stepTwoText">2. Select interior</div>
+		<div class="stepThreeText">3. Select options</div>
+		<div class="centering"><div id="tray" class="tray"></div></div>
+		<div class="interiorSelect">
+			<select onchange="changeLeather(this.value)">
+			  <option>Please select your interior</option>
+			  <option>Leather</option>
+			  <option>Suede</option>
+			  <option>Crocodile</option>
+			  <option>Luxury</option>
+			</select>
+		</div>
+		<div class="interiorDiv"><img id="interiorImage" /></div>
+
+		<div id="optionsD" class="optionsDiv">
+		    <div class="optionOne" onclick="selectOpt(this);">
+		        <img class="optionCheck" src="images/check2.png" />
+		        <img class="optionImg" src="images/gps.jpg" />
+		        <input type="checkbox" style="display:none;" />
+		    </div>
+
+		    <div class="optionTwo" onclick="selectOpt(this);">
+		        <img class="optionCheck" src="images/check2.png" />
+		        <img class="optionImg" src="images/heated.jpg" />
+		        <input type="checkbox" style="display:none;" />
+		    </div>
+
+		    <div class="optionThree" onclick="selectOpt(this);">
+		        <img class="optionCheck" src="images/check2.png" />
+		        <img class="optionImg" src="images/ipod.jpg" />
+		        <input type="checkbox" style="display:none;" />
+		    </div>
+		    
+		</div>
+
+		<div class="descriptionsDiv">
+		    <div class="descriptionOneTitle">
+		        Navigation system
+		    </div>
+		    <div class="descriptionOne">
+		     Gets you to your destination in shortest possible time. Includes voice feedback, Voice command system and Real Time Traffic Information.
+		    </div>
+
+		    <div class="descriptionTwoTitle">
+		        Heated seats
+		    </div>
+		    <div class="descriptionTwo">
+		        Warm yourself up during those chilly drives in the countryside.
+		     </div>
+
+		    <div class="descriptionThreeTitle">
+		        iPod and USB connector
+		    </div>
+		    <div class="descriptionThree">
+		        Listen to some classical tunes stored on your iPod or iPhone.
+		     </div>
+		</div>
+
+		<div>
+		    <input id="color" type="hidden" />
+		    <input id="leather" type="hidden" />
+		    <input id="optionOneIn" type="hidden" />
+		    <input id="optionTwoIn" type="hidden" />
+		    <input id="optionThreeIn" type="hidden" />
+		    <input id="continueButton" CssClass="continueButton" type="submit" value="Continue" />
+		</div>
+	<%--<img class="360class" src="images/360.gif" height="30px" width="30px" style="position:absolute;top:10px;left:370px;" />--%>
+		<div class="footer">
+		    <%--<div>Copyright&copy; 2010 Model Metrics</div>--%>
+		    <img src="images/powered_by2.png" />
+		   <!-- <span onclick="hidePage();">Three sixty</span>
+		   -->
+		</div>
+	</form>
 	<script>
 	 	jQuery(window).load(function () {
 	        window.onorientationchange(null);
@@ -117,92 +201,5 @@
 	        el.style.opacity = "1";
 	    }
 	</script>
-</head>
-<body class="zflow">
-    <form action="/review" method="post">
-		<div class="logo">
-		    <img src="images/modellini-logo.png" />
-		</div>
-
-		<div class="topContainer"></div>
-
-	<%--<a href="#" style="font-size: 16px;" onclick="hidePage();">View in 3D</a>--%>
-		<div class="stepOneText">1. Select a color</div>
-		<div class="stepTwoText">2. Select interior</div>
-		<div class="stepThreeText">3. Select options</div>
-		<div class="centering"><div id="tray" class="tray"></div></div>
-
-		<div class="interiorSelect">
-			<select onchange="changeLeather(this.value)">
-			  <option>Please select your interior</option>
-			  <option>Leather</option>
-			  <option>Suede</option>
-			  <option>Crocodile</option>
-			  <option>Luxury</option>
-			</select>
-		</div>
-		<div class="interiorDiv"><img id="interiorImage" /></div>
-
-		<div id="optionsD" class="optionsDiv">
-		    <div class="optionOne" onclick="selectOpt(this);">
-		        <img class="optionCheck" src="images/check2.png" />
-		        <img class="optionImg" src="images/gps.jpg" />
-		        <input type="checkbox" style="display:none;" />
-		    </div>
-
-		    <div class="optionTwo" onclick="selectOpt(this);">
-		        <img class="optionCheck" src="images/check2.png" />
-		        <img class="optionImg" src="images/heated.jpg" />
-		        <input type="checkbox" style="display:none;" />
-		    </div>
-
-		    <div class="optionThree" onclick="selectOpt(this);">
-		        <img class="optionCheck" src="images/check2.png" />
-		        <img class="optionImg" src="images/ipod.jpg" />
-		        <input type="checkbox" style="display:none;" />
-		    </div>
-		    
-		</div>
-
-		<div class="descriptionsDiv">
-		    <div class="descriptionOneTitle">
-		        Navigation system
-		    </div>
-		    <div class="descriptionOne">
-		     Gets you to your destination in shortest possible time. Includes voice feedback, Voice command system and Real Time Traffic Information.
-		    </div>
-
-		    <div class="descriptionTwoTitle">
-		        Heated seats
-		    </div>
-		    <div class="descriptionTwo">
-		        Warm yourself up during those chilly drives in the countryside.
-		     </div>
-
-		    <div class="descriptionThreeTitle">
-		        iPod and USB connector
-		    </div>
-		    <div class="descriptionThree">
-		        Listen to some classical tunes stored on your iPod or iPhone.
-		     </div>
-		</div>
-
-		<div>
-		    <input id="color" type="hidden" />
-		    <input id="leather" type="hidden" />
-		    <input id="optionOneIn" type="hidden" />
-		    <input id="optionTwoIn" type="hidden" />
-		    <input id="optionThreeIn" type="hidden" />
-		    <input id="continueButton" type="submit" value="Continue" />
-		</div>
-	<%--<img class="360class" src="images/360.gif" height="30px" width="30px" style="position:absolute;top:10px;left:370px;" />--%>
-		<div class="footer">
-		    <%--<div>Copyright&copy; 2010 Model Metrics</div>--%>
-		    <img src="images/powered_by2.png" />
-		   <!-- <span onclick="hidePage();">Three sixty</span>
-		   -->
-		</div>
-	</form>
-	
 </body>
 </html>
