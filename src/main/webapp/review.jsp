@@ -192,7 +192,7 @@
 
        <script>
 			function createOrder() {
-            	order = {}
+            	order = new Object();
                	order.totalPrice = "123";
                	order.interiorImg = "345";
                	order.vehImg = "789";

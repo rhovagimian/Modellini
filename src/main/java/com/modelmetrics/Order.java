@@ -12,6 +12,7 @@ public class Order {
 	private String _optionOne;
 	private String _optionTwo;
 	private String _optionThree;
+	private int _totalPrice = -1;
 	
 	public Order() {
 		reset();
@@ -63,17 +64,24 @@ public class Order {
 		_optionOne = null;
 		_optionTwo = null;
 		_optionThree = null;
+		_totalPrice = -1;
 	}
 	
 	public int getTotal() {
-		int totalPrice = Order.MSRP;
-		String[] options = {_optionOne, _optionTwo, _optionThree};
-		int[] price = {Option1Price, Option2Price, Option3Price};
-		for(int i=0; i < options.length; i++) {
-			if(options[i] != null && options[i].length() > 0) {
-				totalPrice += price[i];
+		if (_totalPrice < 0) {
+			_totalPrice = Order.MSRP;
+			String[] options = {_optionOne, _optionTwo, _optionThree};
+			int[] price = {Option1Price, Option2Price, Option3Price};
+			for(int i=0; i < options.length; i++) {
+				if(options[i] != null && options[i].length() > 0) {
+					_totalPrice += price[i];
+				}
 			}
 		}
-		return totalPrice;
+		return _totalPrice;
+	}
+	
+	public String getOptions() {
+		return "";
 	}
 }
