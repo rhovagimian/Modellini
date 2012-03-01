@@ -105,7 +105,7 @@
 		    <input id="optionOneIn" type="hidden" />
 		    <input id="optionTwoIn" type="hidden" />
 		    <input id="optionThreeIn" type="hidden" />
-		    <input id="continueButton" CssClass="continueButton" type="submit" value="Continue" />
+		    <input id="continueButton" class="continueButton" type="submit" value="Continue" />
 		</div>
 	<%--<img class="360class" src="images/360.gif" height="30px" width="30px" style="position:absolute;top:10px;left:370px;" />--%>
 		<div class="footer">
