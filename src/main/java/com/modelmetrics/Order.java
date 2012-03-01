@@ -2,10 +2,10 @@ package com.modelmetrics;
 
 public class Order {
 	
-	private final static int MSRP = 360400;
-	private final static int Option1Price = 3299;
-	private final static int Option2Price = 4000;
-	private final static int Option3Price = 400;
+	public final static int MSRP = 360400;
+	public final static int Option1Price = 3299;
+	public final static int Option2Price = 4000;
+	public final static int Option3Price = 400;
 	
 	private String _vehicleImage;
 	private String _leatherType;
@@ -63,5 +63,17 @@ public class Order {
 		_optionOne = null;
 		_optionTwo = null;
 		_optionThree = null;
+	}
+	
+	public int getTotal() {
+		int totalPrice = 0;
+		String[] options = {_optionOne, _optionTwo, _optionThree};
+		int[] price = {Option1Price, Option2Price, Option3Price};
+		for(int i=0; i < options.length; i++) {
+			if(options[i] != null && options[i].length() > 0) {
+				totalPrice += price[i];
+			}
+		}
+		return totalPrice;
 	}
 }

@@ -1,5 +1,7 @@
 <jsp:useBean id="configuration" class="com.modelmetrics.Configuration" scope="session" />
 <jsp:useBean id="order" class="com.modelmetrics.Order" scope="request" />
+<%@ page import="java.util.*" %>
+<%@ page import="java.text.*" %>
 <%
 	List<String> requestParameterNames = Collections.list((Enumeration<String>)request.getParameterNames());
 	
@@ -17,9 +19,8 @@
 			order.setLeatherType(value);
 		}
 	}
-
+	NumberFormat formatter = NumberFormat.getCurrencyInstance();
 %>
-<%@ page import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -154,30 +155,29 @@
         <table class="pricingClass">
             <tr>
                 <td><span class="labelHeader2">MSRP:</span></td>
-                <td><span id="msrpLabel"></span></td>
+                <td><span id="msrpLabel"><%= formatter.format(Order.MSRP) %></span></td>
             </tr>
             <% if(order.getOptionOne() != null && order.getOptionOne().length() > 0) { %>
             <tr>
                 <td><span class="labelHeader2">Navigation system:</span></td>
-                <td><span id="optionOnePrice"></span></td>
+                <td><span id="optionOnePrice"><%= formatter.format(Order.Option1Price) %></span></td>
             </tr>
             <% } if(order.getOptionTwo() != null && order.getOptionTwo().length() > 0) { %>
             <tr>
                 <td><span class="labelHeader2">Heated seats:</span></td>
-                <td><span id="optionTwoPrice"></span></td>
+                <td><span id="optionTwoPrice"><%= formatter.format(Order.Option2Price) %></span></td>
             </tr>
             <% } if(order.getOptionThree() != null && order.getOptionThree().length() > 0) { %>
 	            <tr>
 	                <td><span class="labelHeader2">iPod and USB connector:</span></td>
-	                <td><span id="optionThreePrice"></span></td>
+	                <td><span id="optionThreePrice"><%= formatter.format(Order.Option3Price) %></span></td>
 	            </tr>
             <% } %>
             <tr style="border-top-style:solid;border-top-width:2px;border-top-color:Black;">
                 <td><span class="labelHeader2">Total:</span></td>
-                <td><span id="totalPriceLabel"></span></td>
+                <td><span id="totalPriceLabel"><%= formatter.format(order.getTotal()) %></span></td>
             </tr>
         </table>
-        
     </div>
     </form>
     <button id="saveBtn" onclick="createOrder();return false;" >Submit</button>
