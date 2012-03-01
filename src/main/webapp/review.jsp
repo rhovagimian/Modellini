@@ -85,17 +85,17 @@
             
             <tr>
                 <td rowspan="3" style="width:356px;">
-                	<% if(order.getVehicleImage() != null && order.getVehicleImage().length > 0) { %>
+                	<% if(order.getVehicleImage() != null && order.getVehicleImage().length() > 0) { %>
                 		<img id="carImage" height="255" width="400" src="<%= order.getVehicleImage() %>" />
                 	<% } %>
                 </td>
                 <td  style="width:127px;height:75px;">
-                	<% if(order.getOptionOne() != null && order.getOptionOne().length > 0) { %>
+                	<% if(order.getOptionOne() != null && order.getOptionOne().length() > 0) { %>
                 		<img id="optionOneImage" height="50" width="127" src="<%= order.getOptionOne() %>" />
                 	<% } %>
                 </td>
                 <td>
-                	<% if(order.getOptionOne() != null && order.getOptionOne().length > 0) { %>
+                	<% if(order.getOptionOne() != null && order.getOptionOne().length() > 0) { %>
 	                	<div id="navigationPanel">
 	                		<span class="labelHeader">Navigation System</span><br/>
 	                		<span>$3,299</span>
@@ -105,12 +105,12 @@
             </tr>
             <tr>
                 <td  style="width:127px;height:75px;">
-                	<% if(order.getOptionTwo() != null && order.getOptionTwo().length > 0) { %>
+                	<% if(order.getOptionTwo() != null && order.getOptionTwo().length() > 0) { %>
                 		<img id="optionTwoImage" height="50" width="127" src="<%= order.getOptionTwo() %>" />
                 	<% } %>
                 </td>
                 <td>
-                	<% if(order.getOptionTwo() != null && order.getOptionTwo().length > 0) { %>
+                	<% if(order.getOptionTwo() != null && order.getOptionTwo().length() > 0) { %>
 	                	<div id="seatsPanel">
 	                		<span class="labelHeader">Heated seats</span><br/>
 	                		<span>$4,000</span>
@@ -120,12 +120,12 @@
             </tr>
             <tr>
                 <td  style="width:127px;height:75px;">
-                	<% if(order.getOptionThree() != null && order.getOptionThree().length > 0) { %>
+                	<% if(order.getOptionThree() != null && order.getOptionThree().length() > 0) { %>
                 		<img id="optionThreeImage" height="50" width="127" src="<%= order.getOptionThree() %>" />
                 	<% } %>
                 </td>
                 <td>
-                	<% if(order.getOptionTwo() != null && order.getOptionTwo().length > 0) { %>
+                	<% if(order.getOptionTwo() != null && order.getOptionTwo().length() > 0) { %>
 	                	<div id="usbPanel">
 	                		<span class="labelHeader">iPod and USB connector</span><br/>
 	                		<span>$400</span>
@@ -140,7 +140,7 @@
                 <span>Interior:</span>
             </div>
             <div>
-              	<% if(order.getLeatherType() != null && order.getLeatherType().length > 0) { %>
+              	<% if(order.getLeatherType() != null && order.getLeatherType().length() > 0) { %>
              		<img id="leatherImage" height="106" width="166" src="<%= order.getLeatherType() %>" />
               	<% } %>
             </div>
