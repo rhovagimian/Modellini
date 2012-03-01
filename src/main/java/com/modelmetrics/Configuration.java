@@ -93,7 +93,7 @@ public class Configuration {
 	        Map<Object, Object> json = (Map<Object, Object>)new JSONParser().parse(jsonResponse);
 	        System.out.println(json);
 	        if(json.containsKey("totalSize")) {
-	        	Double size = (Double)json.get("totalSize");
+	        	Long size = (Long)json.get("totalSize");
 	        	System.out.println(size);
 	        	if(size != null && size > 0) {
 	        		ArrayList<Object> records = (ArrayList<Object>)json.get("records");
