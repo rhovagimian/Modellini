@@ -61,9 +61,11 @@
         }
     </style>
 	<link href="styles/mobile.css" type="text/css" rel="stylesheet" />
-    <script language="JavaScript" type="text/javascript" src="scripts/core/database.js"></script> 
-	<script language="JavaScript" type="text/javascript" src="scripts/core/datasource.js"></script> 
-    <script language="JavaScript" type="text/javascript" src="scripts/core/prototype.js"></script> 
+    
+  	<script language="JavaScript" type="text/javascript" src="Scripts/core/database.js"></script> 
+  	<script language="JavaScript" type="text/javascript" src="Scripts/core/datasource.js"></script> 
+ 	<script language="JavaScript" type="text/javascript" src="Scripts/core/oauth.js"></script>
+   	<script language="JavaScript" type="text/javascript" src="scripts/core/prototype.js"></script> 
   	<script language="JavaScript" type="text/javascript" src="scripts/mobile.js"></script>
   	<script language="JavaScript" type="text/javascript" src="scripts/jquery-1.4.1.min.js"></script>
 
@@ -201,7 +203,7 @@
 						alert(data);
                   	}
                );
-        		   
+        	   return false;
 			}
        </script>
        <div class="footer">
