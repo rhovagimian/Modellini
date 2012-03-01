@@ -1,1 +1,1 @@
-web: java -jar target/dependency/webapp-runner-7.0.22.jar target/dependency/json-simple-1.1.jar --port $PORT target/Modellini
+web: java -jar target/dependency/webapp-runner-7.0.22.jar --port $PORT target/Modellini
