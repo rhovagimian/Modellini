@@ -35,8 +35,9 @@
 	 	jQuery(window).load(function () {
 	        window.onorientationchange(null);
 	        zflow([
-	        <% for (String image: configuration.getImages()) %>
+	        <% for (String image: configuration.getImages())  {%>
 	            <%= ("\"" + image + "\", ") %>
+	        <% } %>
 	        ], "#tray");
 	        
 	    });
