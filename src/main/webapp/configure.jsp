@@ -119,7 +119,6 @@
 	</script>
 </head>
 <body class="zflow">
-<%= configuration.getOrgId() %>
     <form action="/review" method="post">
 		<div class="logo">
 		    <img src="images/modellini-logo.png" />
