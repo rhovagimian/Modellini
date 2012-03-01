@@ -15,6 +15,7 @@ public class Configuration {
 
 	private String _accessToken;
 	private String _accessUrl;
+	private String _endpoint;
 	private String _orgId;
 	
 	private String _vehicleImage;
@@ -71,43 +72,61 @@ public class Configuration {
 	
 	public ArrayList<String> getImages() {
 		if(_images.isEmpty() && _accessToken != null && _accessUrl != null) {
-			
+			try {
+				Map<Object, Object> json = getSalesforceJSON("select Id from Organization limit 1");
+		        if(json.containsKey("totalSize")) {
+		        	Long size = (Long)json.get("totalSize");
+		        	if(size != null && size > 0) {
+		        		ArrayList<Map<Object, Object>> records = (ArrayList<Map<Object, Object>>)json.get("records");
+		        		for(Map<Object, Object> record : records) {
+		        			String id = record.get("Id").toString();
+		        			_images.add(_accessUrl + "/servlet/servlet.ImageServer?id=" + id + "&oid=" + getOrgId());
+		        		}
+		        	}
+		        }
+			} catch (Exception ex) {
+				ex.printStackTrace(System.err);
+			}
 		}
 		return _images;
 	}
 
-	public void setAccessToken(String value, String url) {
-		_accessToken = value;
+	public void setAccessInformation(String token, String url, String endpoint) {
+		_accessToken = token;
 		_accessUrl = url;
+		_endpoint = endpoint;
 	}
 	
 	public String getOrgId() {
+		if(_orgId == null && _endpoint != null) {
+			try {
+				Map<Object, Object> json = getSalesforceJSON("select Id from Organization limit 1");
+		        if(json.containsKey("totalSize")) {
+		        	Long size = (Long)json.get("totalSize");
+		        	if(size != null && size > 0) {
+		        		ArrayList<Object> records = (ArrayList<Object>)json.get("records");
+		        		Map<Object, Object> record = (Map<Object, Object>)records.get(0);
+		        		_orgId = record.get("Id").toString();
+		        	}
+		        }
+			} catch(Exception ex) {
+				_orgId = null;
+				ex.printStackTrace(System.err);
+			}
+		}
 		return _orgId;
 	}
 	
-	public void setOrgId(String endpoint) {
-		try {
-	        String queryString = "select Id from Organization limit 1";
-	        String jsonResponse = getUrlResponse(endpoint + "query/?q=" + java.net.URLEncoder.encode(queryString, "ISO-8859-1"));
-	        //_orgId = jsonResponse;
-	        Map<Object, Object> json = (Map<Object, Object>)new JSONParser().parse(jsonResponse);
-	        if(json.containsKey("totalSize")) {
-	        	Long size = (Long)json.get("totalSize");
-	        	if(size != null && size > 0) {
-	        		ArrayList<Object> records = (ArrayList<Object>)json.get("records");
-	        		Map<Object, Object> record = (Map<Object, Object>)records.get(0);
-	        		_orgId = record.get("Id").toString();
-	        	}
-	        }
-		} catch(Exception ex) {
-			_orgId = ex.getMessage();
-		}
+	public void setOrgId() {
+		
 	}
+	
 	
 	public void reset() {
 		_images = new ArrayList<String>();
 		_accessToken = null;
 		_accessUrl = null;
+		_endpoint = null;
 		_orgId = null;
 		_vehicleImage = null;
 		_leatherType = null;
@@ -116,13 +135,11 @@ public class Configuration {
 		_optionThree = null;
 	}
 	
-	private String getUrlResponse(String url) throws Exception {
-		return getUrlResponse(url, "GET");
-	}
 	
-	private String getUrlResponse(String url, String method) throws Exception {
-        HttpURLConnection connection = (HttpURLConnection)new URL(url).openConnection();
-        connection.setRequestMethod(method);
+	private Map<Object, Object> getSalesforceJSON(String queryString) throws Exception {
+		String queryUrl = _endpoint + "query/?q=" + java.net.URLEncoder.encode(queryString, "ISO-8859-1");
+        HttpURLConnection connection = (HttpURLConnection)new URL(queryUrl).openConnection();
+        connection.setRequestMethod("GET");
         connection.addRequestProperty("Authorization","OAuth " + _accessToken);
         connection.addRequestProperty("X-PrettyPrint", "1");
         connection.connect();
@@ -135,6 +152,6 @@ public class Configuration {
 
         in.close();
         connection.disconnect();
-        return data;
+        return (Map<Object, Object>)new JSONParser().parse(data);
 	}
 }

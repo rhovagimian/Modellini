@@ -2,8 +2,7 @@
 <jsp:setProperty name="configuration" property="*"/>
 <%
 	configuration.reset();
-	configuration.setAccessToken(request.getParameter("accessToken"), request.getParameter("accessUrl"));
-	configuration.setOrgId(request.getServletContext().getInitParameter("endpoint"));
+	configuration.setAccessInformation(request.getParameter("accessToken"), request.getParameter("accessUrl"), request.getServletContext().getInitParameter("endpoint"));
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -30,31 +29,17 @@
         }
     
     </style>
-    <script type="text/javascript" src="scripts/core/oauth.js"></script>
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/zflow/zflow.js"></script>
 	<script>
-
-
-pageMethodConcept = {
-    callServerSideMethod: function () {
-        PageMethods.setAccessToken(OAuth.decodePercent(OAuth.decodeForm(document.URL.substring(document.URL.indexOf('#') + 1, document.URL.length))[0][1]), OAuth.decodePercent(OAuth.decodeForm(document.URL.substring(document.URL.indexOf('#') + 1, document.URL.length))[1][1]), pageMethodConcept.callback);
-    },
-    callback: function (result) {
-        var resultString = "";
-        if (result) {
-            //done to get rid of the access token and sensitive data in the # url fragment
-            window.location = "Configure.aspx";
-        }
-    }
-}
-
-var accessT = OAuth.decodePercent(OAuth.decodeForm(document.URL.substring(document.URL.indexOf('#') + 1, document.URL.length))[0][1]);
-
-if (accessT != null && accessT.length > 10) {
-    pageMethodConcept.callServerSideMethod();
-}
-	
+	 	jQuery(window).load(function () {
+	        window.onorientationchange(null);
+	        zflow([
+	        <% for (String image: configuration.getImages()) %>
+	            <%= ("\"" + image + "\", ") %>
+	        ], "#tray");
+	        
+	    });
 	    window.onorientationchange = function (event) {
 	        if (window.orientation == 0) {
 	            jQuery("div.centering").attr("class", "centering portrait");
