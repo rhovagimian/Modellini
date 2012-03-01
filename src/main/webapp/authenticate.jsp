@@ -12,8 +12,8 @@
 </head>
 <body>
 	<form name="authenticate" action="configure.jsp" method="post">
-		<input type="text" id="accessToken" style="display: none;" />
-		<input type="text" id="accessUrl" style="display: none;" />
+		<input type="hidden" id="accessToken" name="accessToken" />
+		<input type="hidden" id="accessUrl" name="accessUrl" />
 		<input type="submit" style="display: none;" />
 	</form>
 	<script>
