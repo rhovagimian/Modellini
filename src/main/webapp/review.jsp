@@ -63,14 +63,14 @@
 	<link href="styles/mobile.css" type="text/css" rel="stylesheet" />
     <script language="JavaScript" type="text/javascript" src="scripts/core/database.js"></script> 
 	<script language="JavaScript" type="text/javascript" src="scripts/core/datasource.js"></script> 
-	<script language="JavaScript" type="text/javascript" src="scripts/core/oauth.js"></script>
     <script language="JavaScript" type="text/javascript" src="scripts/core/prototype.js"></script> 
   	<script language="JavaScript" type="text/javascript" src="scripts/mobile.js"></script>
+  	<script language="JavaScript" type="text/javascript" src="scripts/jquery-1.4.1.min.js"></script>
 
 </head>
 <body>
 
-    <form id="form1" action="/createOrder" method="post">
+    <form id="form1" >
     <div class="tableDiv">
         <%--<asp:Label ID="Label1" runat="server" Text=""></asp:Label>--%>
         <div class="topText">
@@ -191,43 +191,24 @@
        <canvas id="thecanvas" width="685" height="200"></canvas>
 
        <script>
-           createOrderMethod = {
-               callServerSideMethod: function (sigBlob, totalP, interiorImg, vehImg, opts) {
-                   PageMethods.createNewOrder(sigBlob, totalP, interiorImg, vehImg, opts, createOrderMethod.callback);
-               },
-               callback: function (result) {
-                   //alert(result);
-                   if (result) {
-                       var orderSuccess = eval("(" + result + ")");
-                       if (orderSuccess.id != null) {
-                           //alert(result);
-                           attachSignature(orderSuccess.id);
-                       }
-                   }
-               }
-           }
-
-           function createOrder() {
-               return false;
-           }
-
-           attachSignatureMethod = {
-               callServerSideMethod: function (orderID, sigBlob) {
-                   PageMethods.attachSignature(orderID, sigBlob, attachSignatureMethod.callback);
-               },
-               callback: function (result) {
-                   if (result) {
-                       //alert('Sales Order created');
-                       window.location = "ThankYou.aspx";
-                   }
-               }
-           }
-
-           function attachSignature(orderID) {
-               //alert(salesRecord.signature);
-               attachSignatureMethod.callServerSideMethod(orderID, salesRecord.signature);
-               return false;
-           }
+			function createOrder() {
+            	order = {}
+               	order.totalPrice = "123";
+               	order.interiorImg = "345";
+               	order.vehImg = "789";
+               	order.opts = "1092";
+               	order.signature = salesRecord.signature;
+        	   	$(function(){
+        		   $.ajax({
+        		      data: order,  
+        		      type: "POST",
+        		      url: "/createOrder",
+        		      success: function(response){
+            		      alert(response);
+        		      }
+        		   }
+				});
+			}
        </script>
        <div class="footer">
     <%--<div>Copyright&copy; 2010 Model Metrics</div>--%>
