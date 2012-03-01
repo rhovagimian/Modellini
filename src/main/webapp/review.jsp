@@ -164,12 +164,6 @@
            }
 
            function createOrder() {
-               //alert(salesRecord.signature);
-               //alert("<%=TotalPrice %>");
-               //alert("<%=LeatherImage.ImageUrl %>");
-               //alert("<%=CarImage.ImageUrl %>");
-               //alert("<%=OptionsSelected %>");
-               createOrderMethod.callServerSideMethod(salesRecord.signature, "<%=TotalPrice %>", "<%=LeatherImage.ImageUrl %>", "<%=CarImage.ImageUrl %>", "<%=OptionsSelected %>");
                return false;
            }
 
