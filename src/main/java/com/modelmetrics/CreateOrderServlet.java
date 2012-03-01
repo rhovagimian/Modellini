@@ -22,14 +22,47 @@ public class CreateOrderServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
+		List<String> attributeNames = Collections.list((Enumeration<String>)req.getSession().getAttributeNames());
+		for (String attributeName : attributeNames){
+			System.out.println(attributeName + " = " + req.getSession().getAttribute(attributeName));
+		}
+		
 		List<String> parameterNames = Collections.list((Enumeration<String>)req.getParameterNames());
 		for (String parameterName : parameterNames){
 			System.out.println(parameterName + " = " + req.getParameter(parameterName));
 		}
 
-		List<String> attributeNames = Collections.list((Enumeration<String>)req.getAttributeNames());
-		for (String attributeName : attributeNames){
-			System.out.println(attributeName + " = " + req.getAttribute(attributeName));
-		}
+		/*if (!String.IsNullOrEmpty(ConnectionSettings.AccessToken) && ConnectionSettings.AccessToken.Length > 10)
+        {
+            WebRequest request = createRequest(ConfigurationSettings.AppSettings["endpoint"] + "sobjects/Sales_Record__c", "POST");
+
+            string JSONText = " {  \"Interior__c\" : \"" + interiorSelected + "\", \"Total_Price__c\" : " + Decimal.Parse(price) + ", \"ImageLink__c\" : \"" + imageLink +"\", \"Options__c\" : \"" + opts + "\" } ";
+            //string JSONText = " {  \"Interior__c\" : \"" + interiorSelected + "\", \"Total_Price__c\" : \"" + Decimal.Parse(price) + "\", \"Options__c\" : \"" + opts + "\" } ";
+
+            //string JSONText = " {  \"Interior__c\" : \"" + interiorSelected + "\" } ";
+            
+
+
+
+            WebResponse response = attachData(request, JSONText).GetResponse();
+
+            resp = readResponse(response);
+            //resp = JSONText;
+        }
+		string resp = "";
+
+        if (!String.IsNullOrEmpty(ConnectionSettings.AccessToken) && ConnectionSettings.AccessToken.Length > 10)
+        {
+            WebRequest request = createRequest(ConfigurationSettings.AppSettings["endpoint"] + "sobjects/Attachment", "POST");//WebRequest.Create("https://prerelna1.pre.salesforce.com/services/data/v20.0/sobjects/Attachment");
+
+            string JSONText = " {  \"Body\" : \"" + sigBlob + "\", \"ParentId\" : \"" + orderID + "\", \"Name\" : \"Signature.png\", \"ContentType\" : \"image/png\" } ";
+
+            WebResponse response = attachData(request, JSONText).GetResponse();
+
+            resp = readResponse(response);
+        }
+
+        return resp;*/
 	}
 }
