@@ -66,7 +66,7 @@ public class Order {
 	}
 	
 	public int getTotal() {
-		int totalPrice = 0;
+		int totalPrice = Order.MSRP;
 		String[] options = {_optionOne, _optionTwo, _optionThree};
 		int[] price = {Option1Price, Option2Price, Option3Price};
 		for(int i=0; i < options.length; i++) {
