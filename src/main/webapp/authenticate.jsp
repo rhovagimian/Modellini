@@ -26,7 +26,7 @@
 			$("#accessUrl").val(accessUrl);
 			$("#authenticate").submit();
 		} else {
-			window.location.replace("index.jsp");
+			window.location.replace("");
 		}
 	</script>
 </body>
