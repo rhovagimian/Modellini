@@ -25,9 +25,9 @@
         }
     
     </style>
-    <script type="text/javascript" src="Scripts/core/oauth.js"></script>
-    <script type="text/javascript" src="Scripts/jquery.min.js"></script>
-    <script type="text/javascript" src="Scripts/zflow/zflow.js"></script>
+    <script type="text/javascript" src="scripts/core/oauth.js"></script>
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/zflow/zflow.js"></script>
 	<script>
 
 
