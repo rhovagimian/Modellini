@@ -34,12 +34,21 @@
 	
 </head>
 <body class="zflow">
+
     <form action="/review" method="post">
+    
 		<div class="logo">
 		    <img src="images/modellini-logo.png" />
 		</div>
-		<div class="topContainer"></div>
+
+
+		
+		<div class="topContainer">
+		
+		</div>
+		
 	<%--<a href="#" style="font-size: 16px;" onclick="hidePage();">View in 3D</a>--%>
+		
 		<div class="stepOneText">1. Select a color</div>
 		<div class="stepTwoText">2. Select interior</div>
 		<div class="stepThreeText">3. Select options</div>
