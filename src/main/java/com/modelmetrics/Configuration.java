@@ -73,7 +73,7 @@ public class Configuration {
 	public ArrayList<String> getImages() {
 		if(_images.isEmpty() && _accessToken != null && _accessUrl != null) {
 			try {
-				Map<Object, Object> json = getSalesforceJSON("select Id from Organization limit 1");
+				Map<Object, Object> json = getSalesforceJSON("SELECT Id, Name from Document where Name like '%Vehicle%' limit 20");
 		        if(json.containsKey("totalSize")) {
 		        	Long size = (Long)json.get("totalSize");
 		        	if(size != null && size > 0) {
