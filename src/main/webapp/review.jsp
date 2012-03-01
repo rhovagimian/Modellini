@@ -155,22 +155,22 @@
         <table class="pricingClass">
             <tr>
                 <td><span class="labelHeader2">MSRP:</span></td>
-                <td><span id="msrpLabel"><%= formatter.format(Order.MSRP) %></span></td>
+                <td><span id="msrpLabel"><%= formatter.format(com.modelmetrics.Order.MSRP) %></span></td>
             </tr>
             <% if(order.getOptionOne() != null && order.getOptionOne().length() > 0) { %>
             <tr>
                 <td><span class="labelHeader2">Navigation system:</span></td>
-                <td><span id="optionOnePrice"><%= formatter.format(Order.Option1Price) %></span></td>
+                <td><span id="optionOnePrice"><%= formatter.format(com.modelmetrics.Order.Option1Price) %></span></td>
             </tr>
             <% } if(order.getOptionTwo() != null && order.getOptionTwo().length() > 0) { %>
             <tr>
                 <td><span class="labelHeader2">Heated seats:</span></td>
-                <td><span id="optionTwoPrice"><%= formatter.format(Order.Option2Price) %></span></td>
+                <td><span id="optionTwoPrice"><%= formatter.format(com.modelmetrics.Order.Option2Price) %></span></td>
             </tr>
             <% } if(order.getOptionThree() != null && order.getOptionThree().length() > 0) { %>
 	            <tr>
 	                <td><span class="labelHeader2">iPod and USB connector:</span></td>
-	                <td><span id="optionThreePrice"><%= formatter.format(Order.Option3Price) %></span></td>
+	                <td><span id="optionThreePrice"><%= formatter.format(com.modelmetrics.Order.Option3Price) %></span></td>
 	            </tr>
             <% } %>
             <tr style="border-top-style:solid;border-top-width:2px;border-top-color:Black;">
