@@ -1,6 +1,15 @@
 package com.modelmetrics;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.simple.parser.JSONParser;
 
 public class Configuration {
 
@@ -17,7 +26,7 @@ public class Configuration {
 	
 	
 	public Configuration() {
-		_images = new ArrayList<String>();
+		reset();
 	}
 	
 	public String getVehicleImage() {
@@ -70,38 +79,61 @@ public class Configuration {
 	public void setAccessToken(String value, String url) {
 		_accessToken = value;
 		_accessUrl = url;
-        //_orgId = getOrgId();
+	}
+	
+	public String getOrgId() {
+		return _orgId;
 	}
 	
 	public void setOrgId(String endpoint) {
-		
-        /*if (_accessToken != null && _accessToken.length() > 10)
-        {
-        	String queryString = "select Id from Organization limit 1";
-            String queryStringEncoded = HttpUtility.UrlEncode(queryString);
-
-            WebRequest request = createRequest(ConfigurationSettings.AppSettings["endpoint"] + "query/?q=" + queryStringEncoded, "GET"); //WebRequest.Create("https://prerelna1.pre.salesforce.com/services/data/v20.0/query/?q=" + queryStringEncoded);
-
-            WebResponse response = request.GetResponse();
-
-            resp = readResponse(response);
+		try {
+	        String queryString = "select Id from Organization limit 1";
+	        String jsonResponse = getUrlResponse(endpoint + "query/?q=" + java.net.URLEncoder.encode(queryString, "ISO-8859-1"));
+	        Map<Object, Object> json = (Map<Object, Object>)new JSONParser().parse(jsonResponse);
+	        if(json.containsKey("totalSize")) {
+	        	Double size = (Double)json.get("totalSize");
+	        	if(size != null && size > 0) {
+	        		ArrayList<Object> records = (ArrayList<Object>)json.get("records");
+	        		Map<Object, Object> record = (Map<Object, Object>)records.get(0);
+	        		_orgId = record.get("Id").toString();
+	        	}
+	        }
+		} catch(Exception ex) {
+			_orgId = null;
+		}
+	}
+	
+	public void reset() {
+		_images = new ArrayList<String>();
+		_accessToken = null;
+		_accessUrl = null;
+		_orgId = null;
+		_vehicleImage = null;
+		_leatherType = null;
+		_optionOne = null;
+		_optionTwo = null;
+		_optionThree = null;
+	}
+	
+	private String getUrlResponse(String url) throws Exception {
+		return getUrlResponse(url, "GET");
+	}
+	
+	private String getUrlResponse(String url, String method) throws Exception {
+        HttpURLConnection connection = (HttpURLConnection)new URL(url).openConnection();
+        connection.setRequestMethod(method);
+        connection.addRequestProperty("Authorization","OAuth " + _accessToken);
+        connection.addRequestProperty("X-PrettyPrint", "1");
+        connection.connect();
+        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String inputLine;
+        String data = "";
+        while ((inputLine = in.readLine()) != null) {
+        	data += inputLine;
         }
 
-        if (resp != "")
-        {
-            Hashtable oooo = (Hashtable)App_Code.JSON.JsonDecode(resp);
-            if (oooo["totalSize"] != null)
-            {
-                double t = (double)oooo["totalSize"];
-                if (t > 0)
-                {
-                    ArrayList al = (ArrayList)oooo["records"];
-
-                    HttpContext.Current.Session["orgID"] = ((Hashtable)(al[0]))["Id"];
-                }
-            }
-        }
-		return "";*/
-		_orgId = "";
+        in.close();
+        connection.disconnect();
+        return data;
 	}
 }

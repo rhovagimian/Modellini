@@ -1,5 +1,10 @@
-<jsp:useBean id="configuration" class="com.modelmetrics.Configuration" scope="session"/>
-<jsp:setProperty name="configuration" property="*"/> 
+<jsp:useBean id="configuration" class="com.modelmetrics.Configuration" scope="session" />
+<jsp:setProperty name="configuration" property="*"/>
+<%
+	configuration.reset();
+	configuration.setAccessToken(request.getParameter("accessToken"), request.getParameter("accessUrl"));
+	configuration.setOrgId(request.getServletContext().getInitParameter("endpoint"));
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -128,8 +133,7 @@ if (accessT != null && accessT.length > 10) {
 	</script>
 </head>
 <body class="zflow">
-<%= request.getParameter("accessToken")%><br/>
-<%= request.getParameter("accessUrl")%>
+<%= configuration.getOrgId() %>
     <form action="/review" method="post">
 		<div class="logo">
 		    <img src="images/modellini-logo.png" />
