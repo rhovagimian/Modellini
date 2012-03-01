@@ -89,7 +89,8 @@ public class Configuration {
 		try {
 	        String queryString = "select Id from Organization limit 1";
 	        String jsonResponse = getUrlResponse(endpoint + "query/?q=" + java.net.URLEncoder.encode(queryString, "ISO-8859-1"));
-	        Map<Object, Object> json = (Map<Object, Object>)new JSONParser().parse(jsonResponse);
+	        _orgId = jsonResponse;
+	        /*Map<Object, Object> json = (Map<Object, Object>)new JSONParser().parse(jsonResponse);
 	        if(json.containsKey("totalSize")) {
 	        	Double size = (Double)json.get("totalSize");
 	        	if(size != null && size > 0) {
@@ -97,9 +98,9 @@ public class Configuration {
 	        		Map<Object, Object> record = (Map<Object, Object>)records.get(0);
 	        		_orgId = record.get("Id").toString();
 	        	}
-	        }
+	        }*/
 		} catch(Exception ex) {
-			_orgId = null;
+			_orgId = ex.getMessage();
 		}
 	}
 	
