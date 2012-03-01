@@ -21,7 +21,7 @@
 		var accessToken = OAuth.decodePercent(decodedForm[0][1]);
 		var accessUrl = OAuth.decodePercent(decodedForm[1][1]);
 		
-		if (accessToken != null && accessToken.length() > 10) {
+		if (accessToken != null && accessToken > 10) {
 			$("#accessToken").val(accessToken);
 			$("#accessUrl").val(accessUrl);
 			$("#authenticate").submit();
