@@ -59,7 +59,7 @@
             height: 68px;
         }
     </style>
-	<link href="css/mobile.css" type="text/css" rel="stylesheet" />
+	<link href="styles/mobile.css" type="text/css" rel="stylesheet" />
     <script language="JavaScript" type="text/javascript" src="scripts/core/database.js"></script> 
 	<script language="JavaScript" type="text/javascript" src="scripts/core/datasource.js"></script> 
 	<script language="JavaScript" type="text/javascript" src="scripts/core/oauth.js"></script>
@@ -125,7 +125,7 @@
                 	<% } %>
                 </td>
                 <td>
-                	<% if(order.getOptionTwo() != null && order.getOptionTwo().length() > 0) { %>
+                	<% if(order.getOptionThree() != null && order.getOptionThree().length() > 0) { %>
 	                	<div id="usbPanel">
 	                		<span class="labelHeader">iPod and USB connector</span><br/>
 	                		<span>$400</span>
@@ -156,18 +156,22 @@
                 <td><span class="labelHeader2">MSRP:</span></td>
                 <td><span id="msrpLabel"></span></td>
             </tr>
+            <% if(order.getOptionOne() != null && order.getOptionOne().length() > 0) { %>
             <tr>
                 <td><span class="labelHeader2">Navigation system:</span></td>
                 <td><span id="optionOnePrice"></span></td>
             </tr>
+            <% } if(order.getOptionTwo() != null && order.getOptionTwo().length() > 0) { %>
             <tr>
                 <td><span class="labelHeader2">Heated seats:</span></td>
                 <td><span id="optionTwoPrice"></span></td>
             </tr>
-            <tr>
-                <td><span class="labelHeader2">iPod and USB connector:</span></td>
-                <td><span id="optionThreePrice"></span></td>
-            </tr>
+            <% } if(order.getOptionThree() != null && order.getOptionThree().length() > 0) { %>
+	            <tr>
+	                <td><span class="labelHeader2">iPod and USB connector:</span></td>
+	                <td><span id="optionThreePrice"></span></td>
+	            </tr>
+            <% } %>
             <tr style="border-top-style:solid;border-top-width:2px;border-top-color:Black;">
                 <td><span class="labelHeader2">Total:</span></td>
                 <td><span id="totalPriceLabel"></span></td>
