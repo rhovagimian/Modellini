@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" /> 
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Thank you</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <style type="text/css">
 
     body
