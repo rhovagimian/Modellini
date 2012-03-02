@@ -1,9 +1,11 @@
 package com.modelmetrics;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -52,9 +54,8 @@ public class CreateOrderServlet extends HttpServlet {
 			}
 		}
 		catch(Exception ex) {
-			ex.printStackTrace();
-			ex.printStackTrace(System.err);
-			resp.sendError(404, ex.getMessage());
+			ex.printStackTrace(System.out);
+			resp.getWriter().write("Exception " + ex.getMessage());
 		}
 	}
 
@@ -67,9 +68,10 @@ public class CreateOrderServlet extends HttpServlet {
         connection.addRequestProperty("Content-Type", "application/json");
         connection.setDoOutput(true);
         connection.connect();
-        OutputStream output = connection.getOutputStream();
-        String encodeData = URLEncoder.encode(data, "UTF-8");
-        output.write(encodeData.getBytes("UTF-8"));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
+        //String encodeData = URLEncoder.encode(data, "UTF-8");
+        writer.write(data);
+        writer.close();
         
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String inputLine;
