@@ -65,6 +65,7 @@ public class CreateOrderServlet extends HttpServlet {
         connection.addRequestProperty("Authorization","OAuth " + accessToken);
         connection.addRequestProperty("X-PrettyPrint", "1");
         connection.addRequestProperty("Content-Type", "application/json");
+        connection.setDoOutput(true);
         connection.connect();
         OutputStream output = connection.getOutputStream();
         String encodeData = URLEncoder.encode(data, "UTF-8");
