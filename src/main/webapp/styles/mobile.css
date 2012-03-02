@@ -207,6 +207,10 @@ background: -webkit-gradient(linear, right bottom, right top, from(#CCC), to(#FF
 	z-index: 999;
 }
 
+#saveBtn .disabled {
+	background-color: Gray;
+}
+
 .tableDiv
 {
    position: absolute;
