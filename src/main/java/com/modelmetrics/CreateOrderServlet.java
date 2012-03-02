@@ -68,10 +68,10 @@ public class CreateOrderServlet extends HttpServlet {
         connection.addRequestProperty("Content-Type", "application/json");
         connection.setDoOutput(true);
         connection.connect();
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
-        String encodeData = URLEncoder.encode(data, "UTF-8");
-        writer.write(encodeData);
-        writer.close();
+        OutputStream output = connection.getOutputStream();
+        byte[] encodedData = data.getBytes("UTF-8");
+        output.write(encodedData);
+        output.close();
         
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String inputLine;
