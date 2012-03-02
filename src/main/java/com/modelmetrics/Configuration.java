@@ -76,7 +76,7 @@ public class Configuration {
 		        }
 			} catch(Exception ex) {
 				_orgId = null;
-				ex.printStackTrace(System.err);
+				ex.printStackTrace(System.out);
 			}
 		}
 		return _orgId;
@@ -94,6 +94,7 @@ public class Configuration {
 		String queryUrl = _endpoint + "query/?q=" + java.net.URLEncoder.encode(queryString, "ISO-8859-1");
         HttpURLConnection connection = (HttpURLConnection)new URL(queryUrl).openConnection();
         connection.setRequestMethod("GET");
+        System.out.println("Access Token = " + _accessToken);
         connection.addRequestProperty("Authorization","OAuth " + _accessToken);
         connection.addRequestProperty("X-PrettyPrint", "1");
         connection.connect();
