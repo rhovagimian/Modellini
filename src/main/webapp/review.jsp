@@ -194,12 +194,21 @@
 
        <script>
 			function createOrder() {
+				jQuery("#saveBtn").attr("disabled", "true");
+				jQuery("#saveBtn").addClass("disabled");
 				jQuery.post("createOrder", 
                 	{ signature : salesRecord.signature, totalPrice: <%= order.getTotal() %>, 
             	   	  interior : <%= "\""+order.getInterior() + "\"" %>, 
             	   	  vehImg: <%= "\"" + order.getVehicleImage() + "\"" %>,
             	   	  options: <%= "\""+ order.getOptions() + "\"" %> }, 
             		function(data) {
+            			jQuery("#saveBtn").removeAttr("disabled");
+              			jQuery("#saveBtn").removeClass("disabled");
+                  		if(data.indexOf("Exception") >= 0) {
+							alert("An error occurred while processing your request, please try again.");
+                        } else {
+							window.location = "thankYou.jsp";
+                        }
 						alert(data);
                   	}
                );
