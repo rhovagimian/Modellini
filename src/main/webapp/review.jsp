@@ -209,7 +209,6 @@
                         } else {
 							window.location = "thankYou.jsp";
                         }
-						alert(data);
                   	}
                );
         	   return false;
