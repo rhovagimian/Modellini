@@ -45,7 +45,7 @@ public class CreateOrderServlet extends HttpServlet {
 				String url = config.getEndpoint() + "sobjects/Sales_Record__c";
 				//post data to salesforce
 	            String orderId = postSalesforceData(url, orderData, config.getAccessToken());
-	            System.out.println(orderId);
+	            System.out.println("Order Id: " + orderId);
 	            
 	            //post signature to salesforce
 	            String signatureData = " {  \"Body\" : \"" + signature + "\", \"ParentId\" : \"" + orderId + "\", \"Name\" : \"Signature.png\", \"ContentType\" : \"image/png\" } ";
