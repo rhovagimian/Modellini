@@ -9,11 +9,14 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.parser.JSONParser;
 
 
 public class CreateOrderServlet extends HttpServlet {
@@ -44,14 +47,15 @@ public class CreateOrderServlet extends HttpServlet {
 					+ totalPrice + ", \"ImageLink__c\" : \"" + imageLink +"\", \"Options__c\" : \"" + options + "\" } ";
 				String url = config.getEndpoint() + "sobjects/Sales_Record__c";
 				//post data to salesforce
-	            String orderId = postSalesforceData(url, orderData, config.getAccessToken());
+				Map<Object, Object> response = postSalesforceData(url, orderData, config.getAccessToken());
+				String orderId = response.get("id").toString();
 	            System.out.println("Order Id: " + orderId);
 	            
 	            //post signature to salesforce
 	            String signatureData = " {  \"Body\" : \"" + signature + "\", \"ParentId\" : \"" + orderId + "\", \"Name\" : \"Signature.png\", \"ContentType\" : \"image/png\" } ";
 	            url = config.getEndpoint() + "sobjects/Attachment";
-	            String response = postSalesforceData(url, signatureData, config.getAccessToken());
-	            resp.getWriter().write(response);
+	            response = postSalesforceData(url, signatureData, config.getAccessToken());
+	            resp.getWriter().write(response.toString());
 			}
 		}
 		catch(Exception ex) {
@@ -61,7 +65,7 @@ public class CreateOrderServlet extends HttpServlet {
 	}
 
 	
-	private String postSalesforceData(String url, String data, String accessToken) throws Exception {
+	private Map<Object, Object> postSalesforceData(String url, String data, String accessToken) throws Exception {
         HttpURLConnection connection = (HttpURLConnection)new URL(url).openConnection();
         connection.setRequestMethod("POST");
         connection.addRequestProperty("Authorization","OAuth " + accessToken);
@@ -83,7 +87,6 @@ public class CreateOrderServlet extends HttpServlet {
 
         in.close();
         connection.disconnect();
-        
-        return response;
+        return (Map<Object, Object>)new JSONParser().parse(response);
 	}
 }
